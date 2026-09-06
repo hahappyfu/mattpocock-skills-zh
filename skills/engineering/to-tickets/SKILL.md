@@ -1,70 +1,70 @@
 ---
 name: to-tickets
-description: Break a plan, spec, or the current conversation into a set of tracer-bullet tickets, each declaring its blocking edges, published to the configured tracker (edges as text in one file per ticket locally, or native blocking links on a real tracker).
+description: "将计划、spec 或当前对话分解为一组 tracer-bullet ticket，每个声明其 blocking edges，发布到配置的 tracker（edges 作为文本每个 ticket 一个文件在本地，或真实 tracker 上的原生 blocking link）。"
 disable-model-invocation: true
 ---
 
 # To Tickets
 
-Break a plan, spec, or conversation into a set of **tickets**: tracer-bullet vertical slices, each declaring the tickets that **block** it.
+将计划、spec 或对话分解为一组 **ticket**：tracer-bullet 纵向切分（vertical slice），每个声明**阻塞**它的其他 ticket。
 
-The issue tracker and triage label vocabulary should have been provided to you. If not, tell the user to run `/setup-matt-pocock-skills`.
+issue tracker 和 triage label 词汇表应该已经提供给你。如果没有，告诉用户运行 `/setup-matt-pocock-skills`。
 
 ## Process
 
-### 1. Gather context
+### 1. 收集上下文
 
-Work from whatever is already in the conversation context. If the user passes a reference (a spec path, an issue number or URL) as an argument, fetch it and read its full body and comments.
+从对话上下文中已有的任何内容开始。如果用户传递引用（spec 路径、issue 编号或 URL）作为参数，获取它并阅读其完整正文和评论。
 
-### 2. Explore the codebase (optional)
+### 2. 探索代码库（可选）
 
-If you have not already explored the codebase, do so to understand the current state of the code. Ticket titles and descriptions should use the project's domain glossary vocabulary, and respect ADRs in the area you're touching.
+如果你尚未探索代码库，请这样做以了解代码的当前状态。ticket 标题和描述应使用项目的领域词汇表（domain glossary）词汇，并遵循你触及区域的 ADR。
 
-Look for opportunities to prefactor the code to make the implementation easier. "Make the change easy, then make the easy change."
+寻找预重构（prefactoring）的机会以使实现更容易。"先让变更容易，再做容易的变更。"
 
-### 3. Draft vertical slices
+### 3. 起草纵向切分
 
-Break the work into **tracer bullet** tickets.
+将工作分解为 **tracer-bullet** ticket。
 
 <vertical-slice-rules>
 
-- Each slice cuts a narrow but COMPLETE path through every layer (schema, API, UI, tests): vertical, NOT a horizontal slice of one layer
-- A completed slice is demoable or verifiable on its own
-- Each slice is sized to fit in a single fresh context window
-- Any prefactoring should be done first
+- 每个 slice 穿过每一层（schema、API、UI、tests）的一条狭窄但完整的路径：纵向，而不是一层的横向切分（horizontal slice）
+- 一个完成的 slice 可以独立演示或验证
+- 每个 slice 的大小适合单个新的上下文窗口（context window）
+- 任何预重构应首先完成
 
 </vertical-slice-rules>
 
-Give each ticket its **blocking edges**: the other tickets that must complete before it can start. A ticket with no blockers can start immediately.
+给每个 ticket 其 **blocking edges**：在它开始之前必须完成的其他 ticket。没有阻塞项的 ticket 可以立即开始。
 
-**Wide refactors are the exception to vertical slicing.** A **wide refactor** is one mechanical change (rename a column, retype a shared symbol) whose **blast radius** fans across the whole codebase, so a single edit breaks thousands of call sites at once and no vertical slice can land green. Don't force it into a tracer bullet; sequence it as **expand–contract**. First expand: add the new form beside the old so nothing breaks. Then migrate the call sites over in batches sized by blast radius (per package, per directory), each batch its own ticket blocked by the expand, keeping CI green batch to batch because the old form still exists. Finally contract: delete the old form once no caller remains, in a ticket blocked by every migrate batch. When even the batches can't stay green alone, keep the sequence but let them share an integration branch that all block a final integrate-and-verify ticket; green is promised only there.
+**宽重构（wide refactor）是纵向切分的例外。**一个**宽重构**是一个单一的机械变更（重命名列、重新类型化共享符号），其**爆炸半径（blast radius）**横跨整个代码库，因此一次编辑会破坏数千个调用点，没有纵向切分可以绿色通过。不要强制它成为 tracer bullet；将其序列化为**扩展收缩模式（expand–contract）**。首先扩展：在旧形式旁边添加新形式，这样什么都不破坏。然后按爆炸半径分批迁移调用点（按包、按目录），每批一个 ticket 被扩展阻塞，保持 CI 批次间绿色，因为旧形式仍然存在。最后收缩：在没有调用者剩余后删除旧形式，在一个被每个迁移批次阻塞的 ticket 中。当即使是批次也无法单独保持绿色时，保持序列但让它们共享一个集成分支（integration branch），所有批次阻塞一个最终的集成验证 ticket；只有在那里才承诺绿色。
 
-### 4. Quiz the user
+### 4. 测试用户
 
-Present the proposed breakdown as a numbered list. For each ticket, show:
+将提议的分解方案作为编号列表呈现。对于每个 ticket，显示：
 
-- **Title**: short descriptive name
-- **Blocked by**: which other tickets (if any) must complete first
-- **What it delivers**: the end-to-end behaviour this ticket makes work
+- **标题**：简短的描述性名称
+- **Blocked by**：哪些其他 ticket（如果有的话）必须先完成
+- **它交付什么**：这个 ticket 使什么端到端行为工作
 
-Ask the user:
+询问用户：
 
-- Does the granularity feel right? (too coarse / too fine)
-- Are the blocking edges correct: does each ticket only depend on tickets that genuinely gate it?
-- Should any tickets be merged or split further?
+- 粒度感觉合适吗？（太粗/太细）
+- blocking edges 正确吗：每个 ticket 只依赖真正约束它的 ticket？
+- 是否应该合并或进一步拆分任何 ticket？
 
-Iterate until the user approves the breakdown.
+迭代直到用户批准分解方案。
 
-### 5. Publish the tickets to the configured tracker
+### 5. 将 ticket 发布到配置的 tracker
 
-Publish the approved tickets. **How** depends on the tracker `/setup-matt-pocock-skills` configured; the tickets are the same either way, only the shape of the blocking edges changes:
+发布已批准的 ticket。**方式**取决于 `/setup-matt-pocock-skills` 配置的 tracker；ticket 无论如何都相同，只有 blocking edges 的形态改变：
 
-- **Local files** → write one file per ticket under `.scratch/<feature-slug>/issues/<NN>-<slug>.md`, numbered from `01` in dependency order (blockers first). Each file's "Blocked by" lists the numbers/titles it depends on. Use the per-ticket file template below: one ticket per file, never a single combined file.
-- **A real issue tracker (GitHub, Linear, …)** → publish one issue per ticket in dependency order (blockers first) so each ticket's blocking edges can reference real identifiers. Use the platform's native blocking / sub-issue relationship where it has one; otherwise set each ticket's "Blocked by" to the blocking issues. Apply the `ready-for-agent` triage label unless instructed otherwise; the tickets are agent-grabbable by construction.
+- **本地文件** → 在 `.scratch/<feature-slug>/issues/<NN>-<slug>.md` 下每个 ticket 一个文件，按依赖顺序从 `01` 开始编号（阻塞项优先）。每个文件的"Blocked by"列出它依赖的编号/标题。使用下方的每 ticket 文件模板：一个 ticket 一个文件，绝不合并为单个文件。
+- **真实 issue tracker（GitHub、Linear……）** → 按依赖顺序发布每个 ticket 一个 issue（阻塞项优先），这样每个 ticket 的 blocking edges 可以引用真实标识符。在平台有原生 blocking / sub-issue 关系时使用；否则将每个 ticket 的"Blocked by"设置为阻塞 issue。应用 `ready-for-agent` triage label，除非另有指示；ticket 构造上就适合 agent 抓取。
 
-Work the **frontier**: any ticket whose blockers are all done. For a purely linear chain that means top to bottom.
+处理**前线（frontier）**：任何阻塞项都已完成的 ticket。对于纯线性链，这意味着从上到下。
 
-Do NOT close or modify any parent issue.
+不要关闭或修改任何父 issue。
 
 <local-ticket-template>
 
@@ -102,4 +102,4 @@ The end-to-end behaviour this ticket makes work, from the user's perspective, no
 
 </issue-template>
 
-In either form, avoid specific file paths or code snippets: they go stale fast. Exception: if a prototype produced a snippet that encodes a decision more precisely than prose can (state machine, reducer, schema, type shape), inline it and note briefly that it came from a prototype. Trim to the decision-rich parts, not a working demo, just the important bits.
+无论哪种形式，避免具体文件路径或代码片段：它们会很快过时。例外：如果原型产出的片段比散文更能精确编码决策（状态机、reducer、schema、类型形状），将其内联并简要注明它来自原型。修剪到决策丰富的部分，不是工作演示，只是重要的部分。

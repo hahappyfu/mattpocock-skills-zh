@@ -136,6 +136,16 @@ blocking link、critical path、judgement call
 | merge conflict | 合并冲突 | — |
 | rebase conflict | 变基冲突 | — |
 | automated check | 自动化检查 | — |
+| blast radius | 爆炸半径 | 代码变更影响范围 |
+| wide refactor | 宽重构 | 单个变更横跨整个代码库 |
+| expand–contract | 扩展收缩模式 | 宽重构的序列化策略 |
+| prefactoring | 预重构 | 实现前使变更更容易的重构 |
+| frontier | 前线 | 所有阻塞项已完成、可立即开始的工单集合 |
+| demo | 演示 | — |
+| acceptance criteria | 验收标准 | — |
+| integration branch | 集成分支 | 多批次共享的验证分支 |
+| rework | 返工 | — |
+| floor | 下限 | — |
 
 ## 使用规则
 
