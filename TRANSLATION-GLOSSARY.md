@@ -132,6 +132,7 @@ blocking link、critical path、judgement call
 | teach | 教学 | 路由语境 |
 | writing-for-agents | 为智能体写作 | 路由语境 |
 | setup-matt-pocock-skills | 安装 matt-pocock-skills | 路由语境 |
+| ubiquitous language | 通用语言 | DDD 语境 |
 
 ## 使用规则
 

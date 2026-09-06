@@ -1,6 +1,6 @@
 # CONTEXT.md Format
 
-## Structure
+## 结构
 
 ```md
 # {Context Name}
@@ -22,18 +22,18 @@ A person or organization that places orders.
 _Avoid_: Client, buyer, account
 ```
 
-## Rules
+## 规则
 
-- **Be opinionated.** When multiple words exist for the same concept, pick the best one and list the others under `_Avoid_`.
-- **Keep definitions tight.** One or two sentences max. Define what it IS, not what it does.
-- **Only include terms specific to this project's context.** General programming concepts (timeouts, error types, utility patterns) don't belong even if the project uses them extensively. Before adding a term, ask: is this a concept unique to this context, or a general programming concept? Only the former belongs.
-- **Group terms under subheadings** when natural clusters emerge. If all terms belong to a single cohesive area, a flat list is fine.
+- **要有主见。** 当同一概念存在多个词语时，选择最佳的一个，将其他列在 `_Avoid_` 下。
+- **保持定义简洁。** 最多一两句话。定义它*是*什么，而不是它做什么。
+- **只包含特定于此项目 context 的术语。** 通用编程概念（超时、错误类型、工具模式）即使项目广泛使用也不属于此。在添加术语前问：这是此 context 独有的概念，还是通用编程概念？只有前者属于。
+- **当自然集群出现时将术语分组到子标题下。** 如果所有术语都属于一个内聚的领域，平铺列表也可以。
 
-## Single vs multi-context repos
+## 单 context 与多 context repo
 
-**Single context (most repos):** One `CONTEXT.md` at the repo root.
+**单 context（大多数 repo）：** 根目录一个 `CONTEXT.md`。
 
-**Multiple contexts:** A `CONTEXT-MAP.md` at the repo root lists the contexts, where they live, and how they relate to each other:
+**多 context：** 根目录一个 `CONTEXT-MAP.md` 列出各 context、它们的位置以及相互关系：
 
 ```md
 # Context Map
@@ -51,10 +51,10 @@ _Avoid_: Client, buyer, account
 - **Ordering ↔ Billing**: Shared types for `CustomerId` and `Money`
 ```
 
-The skill infers which structure applies:
+skill 推断适用哪种结构：
 
-- If `CONTEXT-MAP.md` exists, read it to find contexts
-- If only a root `CONTEXT.md` exists, single context
-- If neither exists, create a root `CONTEXT.md` lazily when the first term is resolved
+- 如果存在 `CONTEXT-MAP.md`，读取它以查找各 context
+- 如果只有根目录 `CONTEXT.md`，单 context
+- 如果两者都不存在，按需创建根目录 `CONTEXT.md`（在解析第一个术语时）
 
-When multiple contexts exist, infer which one the current topic relates to. If unclear, ask.
+当存在多个 context 时，推断当前主题与哪个相关。如果不确定，询问。
