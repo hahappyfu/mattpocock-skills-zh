@@ -104,6 +104,34 @@ blocking link、critical path、judgement call
 | native blocking link | 原生 blocking link | — |
 | declare | 声明 | — |
 | scope | scope | 保留英文 |
+| flow | 流程 | 路由语境 |
+| main flow | 主流程 | 路由语境 |
+| on-ramps | 入口流程 | 路由语境 |
+| standalone | 独立流程 | 路由语境 |
+| vocabulary layer | 词汇层 | 路由语境 |
+| phase boundary | 阶段边界 | 路由语境 |
+| primary source | 一级来源 | 路由语境 |
+| secondary source | 二级来源 | 路由语境 |
+| smart zone | 智能区 | 路由语境 |
+| context window | 上下文窗口 | 路由语境 |
+| working directory | 工作目录 | 路由语境 |
+| paper trail | 纸质记录 | 路由语境 |
+| stateful | 有状态的 | 路由语境 |
+| stateless | 无状态的 | 路由语境 |
+| context | 上下文 | 路由语境 |
+| implement | 实现 | 路由语境 |
+| wayfinder | 探路者 | 路由语境 |
+| grill-with-docs | 带文档访谈 | 路由语境 |
+| grill-me | 访谈我 | 路由语境 |
+| to-spec | 转规格 | 路由语境 |
+| to-tickets | 转工单 | 路由语境 |
+| prototype | 原型 | 路由语境 |
+| research | 调研 | 路由语境 |
+| to-questionnaire | 转问卷 | 路由语境 |
+| wait-what | 等等什么 | 路由语境 |
+| teach | 教学 | 路由语境 |
+| writing-for-agents | 为智能体写作 | 路由语境 |
+| setup-matt-pocock-skills | 安装 matt-pocock-skills | 路由语境 |
 
 ## 使用规则
 
