@@ -153,6 +153,8 @@ blocking link、critical path、judgement call
 | institutional memory | 机构记忆 | 知识库语境 |
 | deduplication | 去重 | 知识库语境 |
 | kebab-case | kebab-case | 保留英文 |
+| seed templates | 种子模板 | setup 语境 |
+| scout | 侦察 | setup 语境 |
 
 ## 使用规则
 
