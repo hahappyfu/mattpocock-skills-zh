@@ -6,9 +6,9 @@
 | -------------------------- | -------------------- | ---------------------------------------- |
 | `needs-triage`             | `needs-triage`       | 维护者需要评估此 issue  |
 | `needs-info`               | `needs-info`         | 等待报告者提供更多信息 |
-| `ready-for-agent`          | ready-for-agent    | 完全指定，准备就绪供 AFK agent使用  |
-| `ready-for-human`          | ready-for-human    | 需要人工实现            |
-| `wontfix`                  | wontfix            | 不会处理                     |
+| `ready-for-agent`          | `ready-for-agent`    | 完全指定，可供 AFK agent 使用  |
+| `ready-for-human`          | `ready-for-human`    | 需要人工实现            |
+| `wontfix`                  | `wontfix`            | 不会处理                     |
 
 当技能提到某个角色（例如"应用 AFK-ready triage label"），使用此表中对应的 label 字符串。
 
