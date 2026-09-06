@@ -155,6 +155,15 @@ blocking link、critical path、judgement call
 | kebab-case | kebab-case | 保留英文 |
 | seed templates | 种子模板 | setup 语境 |
 | scout | 侦察 | setup 语境 |
+| domain docs | 领域文档 | setup 语境 |
+| single-context | 单上下文 | setup 语境 |
+| multi-context | 多上下文 | setup 语境 |
+| heredoc | heredoc | 保留英文 |
+| convention | 约定 | setup 语境 |
+| map | 地图 | setup 语境 |
+| child ticket | 子工单 | setup 语境 |
+| blocking | 阻塞 | setup 语境 |
+| merge request | MR | GitLab 语境 |
 
 ## 使用规则
 
