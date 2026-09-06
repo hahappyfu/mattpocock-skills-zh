@@ -38,12 +38,12 @@ Spec 轴需要 spec 存在且可找到。它按以下顺序查找：
 | --- | --- | --- |
 | 问的问题 | 构建得对不对？ | 是否是对的东西？ |
 | 读取 | 仓库文档化的标准，加上 smell 基线 | 原始 issue 或 spec |
-| 报告 | 文档化的违规（可能是硬性的），和 smell（始终是判断调用） | 缺失或部分的需求、scope creep、实现有误的需求 |
+| 报告 | 文档化的违规（可能是硬性的），和 smell（始终是 judgement call） | 缺失或部分的需求、scope creep、实现有误的需求 |
 | 每项发现引用 | 规范文件和规则，或命名的 smell 加上 hunk | spec 中的行 |
 
 一个不知道你的标准的通用 review skill 正是这种设计试图避免的：它标记你代码库中刻意的东西，而遗漏代码库真正依赖的不变量。所以仓库自己的文档是 Standards 轴的[首要来源](https://www.aihero.dev/ai-coding-dictionary/primary-source)，**仓库始终优先**。
 
-**smell 基线**是它的底线，来自*《重构》*第 3 章的 12 个 Fowler 代码异味：Mysterious Name、Duplicated Code、Feature Envy、Data Clumps、Primitive Obsession、Repeated Switches、Shotgun Surgery、Divergent Change、Speculative Generality、Message Chains、Middle Man、Refused Bequest。每个都是标记化的启发式（"possibly Feature Envy"），绝不是硬性违规，每个都按*是什么* → *如何修复* 陈述，所以每项发现都附带一个修复动作而不是抱怨。你的 linter 已经强制执行的任何内容都被两个轴跳过。
+**smell 基线**是它的底线，来自*《重构》*第 3 章的 12 个 Fowler 代码异味：Mysterious Name、Duplicated Code、Feature Envy、Data Clumps、Primitive Obsession、Repeated Switches、Shotgun Surgery、Divergent Change、Speculative Generality、Message Chains、Middle Man、Refused Bequest。每个都是带标签的启发式判断（"possible Feature Envy"），绝不是硬性违规，每个都按*是什么* → *如何修复* 陈述，所以每项发现都附带一个修复动作而不是抱怨。你的 linter 已经强制执行的任何内容都被两个轴跳过。
 
 ## 常见问题
 
@@ -69,7 +69,7 @@ Spec 轴需要 spec 存在且可找到。它按以下顺序查找：
 
 **为什么每次运行都会发现新问题？**
 
-因为修复会产生新的表面，因为 Standards 轴中判断调用的部分在不同运行之间不是确定性的。一位读者直白地描述了这个循环："/code-review and /improve-code-architecture always find new stuff every time. I implement fixes, rerun these skills, and again and again." 没有收敛保证。把一次通过当作线索列表，对有引用规则支撑的那些采取行动，然后停止：不要循环运行直到它返回干净，因为它不会。
+因为修复会产生新的表面，因为 Standards 轴中 judgement call 的部分在不同运行之间不是确定性的。一位读者直白地描述了这个循环："/code-review and /improve-code-architecture always find new stuff every time. I implement fixes, rerun these skills, and again and again." 没有收敛保证。把一次通过当作线索列表，对有引用规则支撑的那些采取行动，然后停止：不要循环运行直到它返回干净，因为它不会。
 
 **它审查我未提交的工作吗？**
 

@@ -1,6 +1,6 @@
 ---
 name: code-review
-description: "按两个轴审查从固定点（commit、branch、tag 或 merge-base）到 HEAD 的 diff：Standards（代码是否遵循本仓库成文的编码规范？）和 Spec（代码是否符合原始 issue/spec 的要求？）。两个轴在并行子智能体中运行，并列呈现审查结果。当用户想要审查分支、PR、进行中的变更，或要求"审查自 X 以来"时使用。"
+description: "按两个轴审查从固定点（commit、branch、tag 或 merge-base）到 HEAD 的 diff：Standards（代码是否遵循本仓库成文的编码规范？）和 Spec（代码是否符合原始 issue/spec 的要求？）。两个轴在并行子智能体中运行，并列呈现审查结果。当用户想要审查分支、PR、进行中的变更，或要求「审查自 X 以来」时使用。"
 ---
 
 按两个轴审查 `HEAD` 与用户指定的固定点之间的 diff：
@@ -14,7 +14,7 @@ Issue tracker 应该已经提供给你。如果 `docs/agents/issue-tracker.md` �
 
 ## 流程
 
-### 1. 固定固定点
+### 1. 确定固定点
 
 用户指定什么就是什么（commit SHA、分支名、tag、`main`、`HEAD~5` 等）。如果没有指定，询问用户。
 
@@ -38,7 +38,7 @@ Issue tracker 应该已经提供给你。如果 `docs/agents/issue-tracker.md` �
 在仓库文档之外，Standards 轴始终携带下面的 **smell 基线**：一组固定的 Fowler 代码异味（*《重构》*第 3 章），即使仓库没有文档化任何标准也适用。两条规则约束它：
 
 - **仓库优先。**仓库文档化的标准始终优先；当仓库认可基线会标记的内容时，抑制该 smell。
-- **始终是判断调用。**每个 smell 是一个标记化的启发式（"possibly Feature Envy"），绝不是硬性违规。与这里的任何标准一样，跳过工具已经强制执行的内容。
+- **始终是 judgement call。**每个 smell 是一个带标签的启发式判断（"possible Feature Envy"），绝不是硬性违规。与这里的任何标准一样，跳过工具已经强制执行的内容。
 
 每个 smell 按 *是什么* → *如何修复* 阅读；对照 diff 匹配：
 
