@@ -10,7 +10,7 @@
 
 你通过输入 `/setup-matt-pocock-skills` 调用它；[agent](https://www.aihero.dev/ai-coding-dictionary/agent) 不会自行调用它。它被特意标记为不可调用，所以没有其他技能能为你触发它。
 
-每个仓库使用一次，在使用任何其他工程技能之前。如果 [triage](https://www.aihero.dev/skills-triage)、[to-spec](https://www.aihero.dev/skills-to-spec)、[to-tickets](https://aihero.dev/skills-to-tickets) 或 [wayfinder](https://aihero.dev/skills-wayfinder) 开始猜测你的 issue 去向，或应用你 tracker 中不存在的 label，说明它们还未在此设置。一个项目进行到一半的仓库也是运行它的好地方；技能读取已有内容，早期工作不会浪费。
+每个仓库使用一次，在使用任何其他工程技能之前。如果 [triage](https://aihero.dev/skills-triage)、[to-spec](https://aihero.dev/skills-to-spec)、[to-tickets](https://aihero.dev/skills-to-tickets) 或 [wayfinder](https://aihero.dev/skills-wayfinder) 开始猜测你的 issue 去向，或应用你 tracker 中不存在的 label，说明它们还未在此设置。一个项目进行到一半的仓库也是运行它的好地方；技能读取已有内容，早期工作不会浪费。
 
 ## 前置条件
 
@@ -46,7 +46,7 @@ tracker 选项：
 
 前三个作为技能中的模板提供，开箱即用。本地 markdown 是一等选项，不是后备：没有远程仓库的单人项目完全支持。有一点值得重复：如果使用 GitHub，不要使用本地 markdown。它们是替代方案，不是层级。
 
-"其他"也不是占位符。这就是 Jira、Linear、Azure DevOps 和 Beals 都能工作的原因：你描述工作流，技能将你的文字记录在 `docs/agents/issue-tracker.md` 中，下游技能遵循这些文字。社区已经做过这些：基于 [MCP](https://www.aihero.dev/ai-coding-dictionary/mcp) 的 Jira 变体、像 `gh` 一样工作的 Gitea CLI、手工构建的本地 dashboard。
+"其他"也不是占位符。这就是 Jira、Linear、Azure DevOps 和 Beads 都能工作的原因：你描述工作流，技能将你的文字记录在 `docs/agents/issue-tracker.md` 中，下游技能遵循这些文字。社区已经做过这些：基于 [MCP](https://www.aihero.dev/ai-coding-dictionary/mcp) 的 Jira 变体、像 `gh` 一样工作的 Gitea CLI、手工构建的本地 dashboard。
 
 ## 常见问题
 
@@ -91,4 +91,4 @@ v1.1 后直接问过 Matt，他说需要。技能自己的结束消息更温和�
 
 ## 适合位置
 
-`setup-matt-pocock-skills` 是工程流程的**一次性安装**，是其他所有技能的前提而非链中步骤。它的邻居是它的读者：[triage](https://aihero.dev/skills-triage)，应用此处写入的 label 词汇表；[to-spec](https://www.aihero.dev/skills-to-spec) 和 [to-tickets](https://aihero.dev/skills-to-tickets)，发布到此处命名的 tracker；[wayfinder](https://aihero.dev/skills-wayfinder)，读取同一 tracker 文件的"探路操作（Wayfinding operations）"节以了解地图和子 [ticket](https://www.aihero.dev/ai-coding-dictionary/ticket) 的存储方式。它记录的领域文档布局是 [domain-modeling](https://www.aihero.dev/skills-domain-modeling) 稍后填充的：它在术语或决策实际解决时才懒创建 `CONTEXT.md` 和 ADR，所以安装后的空仓库是预期状态。关于下一步使用哪个技能，[ask-matt](https://www.aihero.dev/skills-ask-matt) 路由整套技能。
+`setup-matt-pocock-skills` 是工程流程的**一次性安装**，是其他所有技能的前提而非链中步骤。它的邻居是它的读者：[triage](https://aihero.dev/skills-triage)，应用此处写入的 label 词汇表；[to-spec](https://aihero.dev/skills-to-spec) 和 [to-tickets](https://aihero.dev/skills-to-tickets)，发布到此处命名的 tracker；[wayfinder](https://aihero.dev/skills-wayfinder)，读取同一 tracker 文件的"探路操作（Wayfinding operations）"节以了解地图和子 [ticket](https://www.aihero.dev/ai-coding-dictionary/ticket) 的存储方式。它记录的领域文档布局是 [domain-modeling](https://aihero.dev/skills-domain-modeling) 稍后填充的：它在术语或决策实际解决时才懒创建 `CONTEXT.md` 和 ADR，所以安装后的空仓库是预期状态。关于下一步使用哪个技能，[ask-matt](https://aihero.dev/skills-ask-matt) 路由整套技能。
