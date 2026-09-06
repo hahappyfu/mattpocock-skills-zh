@@ -28,10 +28,10 @@ issue tracker 和 triage label 词汇表应该已经提供给你。如果没有�
 
 <vertical-slice-rules>
 
-- 每个 slice 穿过每一层（schema、API、UI、tests）的一条狭窄但完整的路径：纵向，而不是一层的横向切分（horizontal slice）
-- 一个完成的 slice 可以独立演示或验证
-- 每个 slice 的大小适合单个新的上下文窗口（context window）
-- 任何预重构应首先完成
+- Each slice cuts a narrow but COMPLETE path through every layer (schema, API, UI, tests): vertical, NOT a horizontal slice of one layer
+- A completed slice is demoable or verifiable on its own
+- Each slice is sized to fit in a single fresh context window
+- Any prefactoring should be done first
 
 </vertical-slice-rules>
 

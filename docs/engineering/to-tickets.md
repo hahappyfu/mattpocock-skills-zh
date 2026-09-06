@@ -2,7 +2,7 @@
 
 `to-tickets` 接收一个计划、一份 [spec](https://www.aihero.dev/ai-coding-dictionary/spec) 或你当前的对话，将其分解为一组 **[ticket](https://www.aihero.dev/ai-coding-dictionary/ticket)** 发布到你的 issue tracker。每个 ticket 声明其 **blocking edges**：必须在其开始之前完成的其他 ticket。
 
-每个 ticket 都是一个 **tracer bullet**：一条狭窄但完整的路径，贯穿变更的每一层（schema、API、UI、tests），一旦落地就可以独立演示。这个约束让它表现得不同于显而易见的拆分方式，即一次切一层并在最后集成。它还将每个 ticket 的大小调整为适合单个新的 [context window](https://www.aihero.dev/ai-coding-dictionary/context-window)，因为拿起 ticket 的是一个从未见过你的 spec 的 [session](https://aihero.dev/ai-coding-dictionary/session)。
+每个 ticket 都是一个 **tracer bullet**：一条狭窄但完整的路径，贯穿变更的每一层（schema、API、UI、tests），一旦落地就可以独立演示。这个约束让它表现得不同于显而易见的拆分方式，即一次切一层并在最后集成。它还将每个 ticket 的大小调整为适合单个新的 [context window](https://www.aihero.dev/ai-coding-dictionary/context-window)，因为拿起 ticket 的是一个从未见过你的 spec 的 [session](https://www.aihero.dev/ai-coding-dictionary/session)。
 
 ## 何时使用
 
