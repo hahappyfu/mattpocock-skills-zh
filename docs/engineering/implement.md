@@ -1,8 +1,8 @@
 ## 它做什么
 
-`implement` 实现已经决定好的工作。你指向一个[工单](https://www.aihero.dev/ai-coding-dictionary/ticket)、一份[规格说明](https://www.aihero.dev/ai-coding-dictionary/spec)，或你刚才在对话中商定的计划，它就会编写代码，在接缝处驱动 [tdd](https://aihero.dev/skills-tdd)，运行类型检查，最后运行 [code-review](https://www.aihero.dev/skills-code-review)，然后提交到当前分支。
+`implement` 实现已经决定好的工作。你指向一个[工单](https://aihero.dev/ai-coding-dictionary/ticket)、一份[规格说明](https://aihero.dev/ai-coding-dictionary/spec)，或你刚才在对话中商定的计划，它就会编写代码，在接缝处驱动 [tdd](https://aihero.dev/skills-tdd)，运行类型检查，最后运行 [code-review](https://aihero.dev/skills-code-review)，然后提交到当前分支。
 
-它永远不会重新打开计划。没有访谈、没有澄清轮次、没有提出不同方法。无论上游确定了什么，那就是输入，技能的全部工作就是将其变成一个提交。这就是它与在一个全新的[智能体](https://www.aihero.dev/ai-coding-dictionary/agent)中输入"构建这个"的区别，后者会在构建时愉快地重新设计工作。
+它永远不会重新打开计划。没有访谈、没有澄清轮次、没有提出不同方法。无论上游确定了什么，那就是输入，技能的全部工作就是将其变成一个提交。这就是它与在一个全新的[智能体](https://aihero.dev/ai-coding-dictionary/agent)中输入"构建这个"的区别，后者会在构建时愉快地重新设计工作。
 
 ## 何时使用
 
@@ -12,15 +12,15 @@
 
 | 工作的类型 | 使用方式 |
 | --- | --- |
-| 追踪器上的工单 | `/implement #42`，每个[会话](https://www.aihero.dev/ai-coding-dictionary/session)一个工单，工单之间[清空](https://www.aihero.dev/ai-coding-dictionary/clearing)上下文 |
-| 规格说明，尚未拆分，构建跨越多个会话 | 先用 [to-tickets](https://www.aihero.dev/skills-to-tickets)，然后按工单 `/implement` |
+| 追踪器上的工单 | `/implement #42`，每个[会话](https://aihero.dev/ai-coding-dictionary/session)一个工单，工单之间[清空](https://aihero.dev/ai-coding-dictionary/clearing)上下文 |
+| 规格说明，尚未拆分，构建跨越多个会话 | 先用 [to-tickets](https://aihero.dev/skills-to-tickets)，然后按工单 `/implement` |
 | 规格说明，构建较小 | 直接针对规格说明 `/implement` |
 | 只在你刚才的对话中，且仍然较小 | 直接在同一个窗口中 `/implement` |
 | 尚未写在任何地方 | [grill-with-docs](https://aihero.dev/skills-grill-with-docs)，如果没有代码库则用 [grill-me](https://aihero.dev/skills-grill-me) |
 | 一个你想要测试先行的具体行为，没有规格说明 | 直接用 [tdd](https://aihero.dev/skills-tdd) |
-| 已经构建好，你想要检查 | 直接用 [code-review](https://www.aihero.dev/skills-code-review) |
+| 已经构建好，你想要检查 | 直接用 [code-review](https://aihero.dev/skills-code-review) |
 
-同一会话的情况值得单独说明，因为技能自身的首行并没有涵盖它。`SKILL.md` 写的是"规格说明或工单"，这会引导[模型](https://www.aihero.dev/ai-coding-dictionary/model)去寻找一个不存在的文件。如果计划只存在于对话流中，在调用时说明这一点。
+同一会话的情况值得单独说明，因为技能自身的首行并没有涵盖它。`SKILL.md` 写的是"规格说明或工单"，这会引导[模型](https://aihero.dev/ai-coding-dictionary/model)去寻找一个不存在的文件。如果计划只存在于对话流中，在调用时说明这一点。
 
 ## 前置条件
 
@@ -38,7 +38,7 @@
 4. 最后运行一次完整测试套件。
 5. 运行 [code-review](https://aihero.dev/skills-code-review)，然后提交到当前分支。
 
-一次运行覆盖一个工单。[to-tickets](https://www.aihero.dev/skills-to-tickets) 产生的工单是 tracer-bullet 纵向切分（vertical slice），大小适合单个新的[上下文窗口](https://www.aihero.dev/ai-coding-dictionary/context-window)，所以预期的节奏是：清空上下文，实现一个工单，提交，再次清空。每个工单都是自包含的，这就是为什么前一个工单的上下文可以丢弃。
+一次运行覆盖一个工单。[to-tickets](https://aihero.dev/skills-to-tickets) 产生的工单是 tracer-bullet 纵向切分（vertical slice），大小适合单个新的[上下文窗口](https://aihero.dev/ai-coding-dictionary/context-window)，所以预期的节奏是：清空上下文，实现一个工单，提交，再次清空。每个工单都是自包含的，这就是为什么前一个工单的上下文可以丢弃。
 
 ## 预先商定的接缝
 
@@ -50,11 +50,11 @@
 
 **它完成了，但我的工单仍然开放，验收标准仍然未勾选。**
 
-正确，这是预期的。`implement` 没有完成步骤。它在提交后结束，永远不会接触工作项，这一点在 GitHub Issues 和本地 markdown 追踪器上都已确认，所以这不是追踪器集成问题。它也不会对 `code-review` 产生的[发现](https://www.aihero.dev/ai-coding-dictionary/findings)采取行动，也不会勾选原始 issue 上的 `- [ ]` 复选框。请自己关闭工单并核对标准。这对依赖链的影响最大，因为 `to-tickets` 将边界定义为所有阻塞项（blockers）都已关闭的工单。如果什么都没有关闭，就没有什么会明显解除阻塞。
+正确，这是预期的。`implement` 没有完成步骤。它在提交后结束，永远不会接触工作项，这一点在 GitHub Issues 和本地 markdown 追踪器上都已确认，所以这不是追踪器集成问题。它也不会对 `code-review` 产生的发现采取行动，也不会勾选原始 issue 上的 `- [ ]` 复选框。请自己关闭工单并核对标准。这对依赖链的影响最大，因为 `to-tickets` 将边界定义为所有阻塞项（blockers）都已关闭的工单。如果什么都没有关闭，就没有什么会明显解除阻塞。
 
 **我能不能一次性指向所有工单，或者并行运行多个？**
 
-不能。一次调用，一个工单。批量调度工单队列和[子智能体](https://www.aihero.dev/ai-coding-dictionary/subagent)扇出被反复请求，但两者都不存在。在一个检出中并行运行多个 `/implement` 会话比不支持更糟糕：一份现场报告描述了在一个会话中 `git commit --amend` 落在另一个会话的提交上，一个 stash 从 `refs/stash` 中消失，提交落在错误的分支上，所有这些都在一个下午、三个问题中发生。这些会话共享一个工作目录、一个索引和一个 HEAD。Git worktree 是社区的变通方案，但请注意 `refs/stash` 也跨 worktree 共享，所以仅靠 worktree 无法解决 stash 情况。如果你想要并行，你必须自己组装。
+不能。一次调用，一个工单。批量调度工单队列和[子智能体](https://aihero.dev/ai-coding-dictionary/subagent)扇出被反复请求，但两者都不存在。在一个检出中并行运行多个 `/implement` 会话比不支持更糟糕：一份现场报告描述了在一个会话中 `git commit --amend` 落在另一个会话的提交上，一个 stash 从 `refs/stash` 中消失，提交落在错误的分支上，所有这些都在一个下午、三个问题中发生。这些会话共享一个工作目录、一个索引和一个 HEAD。Git worktree 是社区的变通方案，但请注意 `refs/stash` 也跨 worktree 共享，所以仅靠 worktree 无法解决 stash 情况。如果你想要并行，你必须自己组装。
 
 **它能不能打开一个拉取请求（pull request）而不是提交？**
 
@@ -64,11 +64,11 @@
 
 `code-review` 审查 `git diff <fixed-point>...HEAD`，它排除了暂存（staged）和工作树（working-tree）的更改。`implement` 在提交前运行它，所以除非已经存在一个中间提交，否则该 diff 中没有什么可审查的。多个人报告过这个问题，双方都未修复。先提交，然后针对你分叉的点进行审查。
 
-另外，有些人故意不想在运行中进行审查，因为审查自己刚写代码的智能体倾向于自己的解决方案。在一个新的会话中针对 fixed point 运行 [code-review](https://www.aihero.dev/skills-code-review) 是一个合理的替代方案，这也是该技能在两个轴（axis）中分别运行子智能体的原因。
+另外，有些人故意不想在运行中进行审查，因为审查自己刚写代码的智能体倾向于自己的解决方案。在一个新的会话中针对 fixed point 运行 [code-review](https://aihero.dev/skills-code-review) 是一个合理的替代方案，这也是该技能在两个轴（axis）中分别运行子智能体的原因。
 
 **一个工单消耗了 150k tokens。我使用方式不对吗？**
 
-可能是工单太大，而不是技能使用不当。一次运行包含代码库探索、每个 seam 一个 red-green 循环、完整套件和审查，所以一个超过 100k [tokens](https://www.aihero.dev/ai-coding-dictionary/token) 的非平凡工单是正常的，而不是出了问题的信号。杠杆在上游：在 [to-tickets](https://www.aihero.dev/skills-to-tickets) 中调整工单大小，使每个工单适合一个新的窗口。如果一个工单持续爆炸，拆分它，而不是提高[工作量](https://www.aihero.dev/ai-coding-dictionary/effort)级别。
+可能是工单太大，而不是技能使用不当。一次运行包含代码库探索、每个 seam 一个 red-green 循环、完整套件和审查，所以一个超过 100k [tokens](https://aihero.dev/ai-coding-dictionary/token) 的非平凡工单是正常的，而不是出了问题的信号。杠杆在上游：在 [to-tickets](https://aihero.dev/skills-to-tickets) 中调整工单大小，使每个工单适合一个新的窗口。如果一个工单持续爆炸，拆分它，而不是提高[工作量](https://aihero.dev/ai-coding-dictionary/effort)级别。
 
 **在新会话中 `/implement #2` 处理了完全不相关的内容。**
 
