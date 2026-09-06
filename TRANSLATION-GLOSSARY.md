@@ -146,6 +146,13 @@ blocking link、critical path、judgement call
 | integration branch | 集成分支 | 多批次共享的验证分支 |
 | rework | 返工 | — |
 | floor | 下限 | — |
+| brief | 简报 | agent brief 语境 |
+| procedural | 流程化的 | — |
+| durability | 持久性 | — |
+| gold-plating | 过度装饰 | — |
+| institutional memory | 机构记忆 | 知识库语境 |
+| deduplication | 去重 | 知识库语境 |
+| kebab-case | kebab-case | 保留英文 |
 
 ## 使用规则
 

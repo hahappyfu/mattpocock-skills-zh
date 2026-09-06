@@ -1,42 +1,42 @@
-# Writing Agent Briefs
+# 为智能体写作简报
 
-An agent brief is a structured comment posted on a GitHub issue or PR when it moves to `ready-for-agent`. It is the authoritative specification that an AFK agent will work from. The original body and discussion are context: the agent brief is the contract.
+Agent 简报是一条结构化的评论，当 issue 或 PR 流转到 `ready-for-agent` 时发布。它是 AFK agent 将遵循的权威规格说明。原始的 issue 正文和讨论是上下文：agent 简报才是契约。
 
-The brief states **what the agent should do**, which stretches to both surfaces: for an issue, that's building the change from nothing; for a PR, it's what's left to do *to the existing diff*: finish it, close gaps, address review points. Same principles either way; the PR example below shows the difference.
+简报描述**智能体应该做什么**，适用于两种场景：对于 issue，是从零构建变更；对于 PR，是对*现有 diff* 需要完成的工作：收尾、弥合差距、处理评审意见。两种场景的原则相同；下方的 PR 示例展示了区别。
 
-## Principles
+## 原则
 
-### Durability over precision
+### 持久性优先于精确性
 
-The issue may sit in `ready-for-agent` for days or weeks. The codebase will change in the meantime. Write the brief so it stays useful even as files are renamed, moved, or refactored.
+Issue 可能在 `ready-for-agent` 状态停留数天或数周。在此期间代码库会变更。编写简报时要确保即使文件被重命名、移动或重构，它依然有用。
 
-- **Do** describe interfaces, types, and behavioral contracts
-- **Do** name specific types, function signatures, or config shapes that the agent should look for or modify
-- **Don't** reference file paths: they go stale
-- **Don't** reference line numbers
-- **Don't** assume the current implementation structure will remain the same
+- **应该** 描述接口、类型和行为契约
+- **应该** 命名智能体需要查找或修改的具体类型、函数签名或配置形状
+- **不要** 引用文件路径：它们会过时
+- **不要** 引用行号
+- **不要** 假设当前的实现结构会保持不变
 
-### Behavioral, not procedural
+### 描述行为，而非流程
 
-Describe **what** the system should do, not **how** to implement it. The agent will explore the codebase fresh and make its own implementation decisions.
+描述系统**应该做什么**，而非**如何**实现。智能体将从头探索代码库并自行做出实现决策。
 
 - **Good:** "The `SkillConfig` type should accept an optional `schedule` field of type `CronExpression`"
 - **Bad:** "Open src/types/skill.ts and add a schedule field on line 42"
 - **Good:** "When a user runs `/triage` with no arguments, they should see a summary of issues needing attention"
 - **Bad:** "Add a switch statement in the main handler function"
 
-### Complete acceptance criteria
+### 完整的验收标准
 
-The agent needs to know when it's done. Every agent brief must have concrete, testable acceptance criteria. Each criterion should be independently verifiable.
+智能体需要知道何时完成。每个 agent 简报都必须有具体的、可测试的验收标准。每条标准应可独立验证。
 
 - **Good:** "Running `gh issue list --label needs-triage` returns issues that have been through initial classification"
 - **Bad:** "Triage should work correctly"
 
-### Explicit scope boundaries
+### 明确的 scope 边界
 
-State what is out of scope. This prevents the agent from gold-plating or making assumptions about adjacent features.
+声明什么是 out of scope。这可以防止智能体过度装饰或对相邻功能做出假设。
 
-## Template
+## 模板
 
 ```markdown
 ## Agent Brief
@@ -67,9 +67,9 @@ Be specific about edge cases and error conditions.
 - Adjacent feature that might seem related but is separate
 ```
 
-## Examples
+## 示例
 
-### Good agent brief (bug)
+### 优秀的 agent 简报（bug）
 
 ```markdown
 ## Agent Brief
@@ -104,7 +104,7 @@ and append "..." to indicate truncation.
 - Multi-line description support
 ```
 
-### Good agent brief (enhancement)
+### 优秀的 agent 简报（enhancement）
 
 ```markdown
 ## Agent Brief
@@ -145,9 +145,9 @@ checked for matches.
 - Bug reports (only enhancement rejections go to `.out-of-scope/`)
 ```
 
-### Good agent brief (PR)
+### 优秀的 agent 简报（PR）
 
-For a PR, "Current behavior" describes the state of the diff, and the brief asks the agent to finish or fix it rather than build from scratch.
+对于 PR，"Current behavior" 描述的是 diff 的状态，简报要求智能体完成或修复它，而非从零构建。
 
 ```markdown
 ## Agent Brief
@@ -182,7 +182,7 @@ is untouched when the flag is absent.
 - Changing the JSON shape of the success payload the PR already defined
 ```
 
-### Bad agent brief
+### 糟糕的 agent 简报
 
 ```markdown
 ## Agent Brief
@@ -198,10 +198,10 @@ The function around line 150 has the issue.
 - src/types.ts (line 42)
 ```
 
-This is bad because:
-- No category
-- Vague description ("the triage thing is broken")
-- References file paths and line numbers that will go stale
-- No acceptance criteria
-- No scope boundaries
-- No description of current vs desired behavior
+这很糟糕，因为：
+- 没有 category
+- 描述模糊（"the triage thing is broken"）
+- 引用了会过时的文件路径和行号
+- 没有验收标准
+- 没有 scope 边界
+- 没有描述当前行为和期望行为
