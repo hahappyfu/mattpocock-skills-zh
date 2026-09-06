@@ -133,6 +133,9 @@ blocking link、critical path、judgement call
 | writing-for-agents | 为智能体写作 | 路由语境 |
 | setup-matt-pocock-skills | 安装 matt-pocock-skills | 路由语境 |
 | ubiquitous language | 通用语言 | DDD 语境 |
+| merge conflict | 合并冲突 | — |
+| rebase conflict | 变基冲突 | — |
+| automated check | 自动化检查 | — |
 
 ## 使用规则
 
