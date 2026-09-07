@@ -18,23 +18,33 @@ const files = execSync("git ls-files", { encoding: "utf8" })
 let failed = false;
 for (const file of files) {
   const text = fs.readFileSync(file, "utf8");
+  const lines = text.split("\n");
   for (const word of DIRTY) {
-    if (text.includes(word)) {
+    const idx = lines.findIndex((l) => l.includes(word));
+    if (idx !== -1) {
       failed = true;
-      console.error(`DIRTY ${file}: found ${word}`);
+      console.error(`DIRTY ${file}:${idx + 1}: found ${word}`);
     }
   }
-  const prose = text.split("```").filter((_, i) => i % 2 === 0).join("\n");
-  for (const line of prose.split("\n")) {
-    if (line.startsWith("---")) continue;
-    if (/^name:/.test(line)) continue;
-    if (/https?:\/\//.test(line)) continue;
-    const words = line.match(/[A-Za-z]{4,}/g) || [];
-    const unknown = words.filter((w) => !ALLOW.has(w));
-    if (unknown.length >= 8) {
-      console.error(`REVIEW ${file}: ${unknown.slice(0, 8).join(", ")}`);
+  const parts = text.split("```");
+  let lineNum = 0;
+  parts.forEach((part, partIdx) => {
+    const prose = part.split("\n");
+    if (partIdx % 2 === 0) {
+      prose.forEach((line, i) => {
+        const lineno = lineNum + i + 1;
+        if (line.startsWith("---")) return;
+        if (/^name:/.test(line)) return;
+        if (/https?:\/\//.test(line)) return;
+        const words = line.match(/[A-Za-z]{4,}/g) || [];
+        const unknown = words.filter((w) => !ALLOW.has(w));
+        if (unknown.length >= 8) {
+          console.error(`REVIEW ${file}:${lineno}: ${unknown.slice(0, 8).join(", ")}`);
+        }
+      });
     }
-  }
+    lineNum += prose.length - 1;
+  });
 }
 
 process.exit(failed ? 1 : 0);
