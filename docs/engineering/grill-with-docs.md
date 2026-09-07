@@ -26,7 +26,7 @@ wayfinder 的区别在于会话数：`/grill-with-docs` 用于单会话规划，
 
 该 skill 还需要另外两个 skill 已安装，因为它的 `SKILL.md` 只有一行并委托给它们：[grilling](https://aihero.dev/skills-grilling) 提供访谈，[domain-modeling](https://aihero.dev/skills-domain-modeling) 提供写入。只安装 `grill-with-docs` 会得到一个无法工作的 skill。
 
-## 纸质记录（paper trail）
+## 落盘记录（paper trail）
 
 会话产出三样东西，但它们的份量不同。
 
@@ -49,7 +49,7 @@ wayfinder 的区别在于会话数：`/grill-with-docs` 用于单会话规划，
 有两个已知原因。常见原因：没有内容合格。ADR 需要三道门控全部通过，一个关于无新词汇变更的会话确实没什么可写的。真正的 bug：当该 skill 在其他编排层内运行时（spec-driven-development 封装、多智能体框架、作为他人流水线步骤调用的规则），文件写入部分据报会静默失败，而访谈仍然运行。这个问题已记录但未修复。如果你处于这种设置，在信任会话输出前先检查工作目录。
 
 **它一次性问完所有问题，没有建议，也没提到 `CONTEXT.md`。**
-这是该 skill 加载其两个依赖失败。因为 `SKILL.md` 是一行委托，智能体如果没有加载 [grilling](https://aihero.dev/skills-grilling) 和 [domain-modeling](https://aihero.dev/skills-domain-modeling)，就会猜测 grilling 是什么含义，你会得到一堆无差别的问题。部分加载是更令人困惑的情况：`grilling` 加载了，`domain-modeling` 没有，你得到一次没有纸质记录的好访谈。这与模型和[工作量（effort）](https://www.aihero.dev/ai-coding-dictionary/effort)级别相关，是该 skill 被报告最多的问题。如果你怀疑是这种情况，直接问智能体加载了哪些 skill。
+这是该 skill 加载其两个依赖失败。因为 `SKILL.md` 是一行委托，智能体如果没有加载 [grilling](https://aihero.dev/skills-grilling) 和 [domain-modeling](https://aihero.dev/skills-domain-modeling)，就会猜测 grilling 是什么含义，你会得到一堆无差别的问题。部分加载是更令人困惑的情况：`grilling` 加载了，`domain-modeling` 没有，你得到一次没有落盘记录的好访谈。这与模型和[工作量（effort）](https://www.aihero.dev/ai-coding-dictionary/effort)级别相关，是该 skill 被报告最多的问题。如果你怀疑是这种情况，直接问智能体加载了哪些 skill。
 
 **我的其他决策去哪了？**
 只留在对话中。这是该 skill 最实质的未解决问题：词汇表不是 spec，大多数回答不值得产出 ADR，也没有账本将每个确定的回答关联到 spec、工单和测试。精确的回答（顺序保证、否定需求、数值默认值）在下游被弱化为模糊措辞，结果可能看起来完整但遗漏了你实际决定的东西。目前可用的缓解方法是保留会话并直接将其交给 [to-spec](https://aihero.dev/skills-to-spec)，以及对照你自己的回答重新阅读 spec 而不是假设它已捕获。

@@ -115,7 +115,7 @@ blocking link、critical path、judgement call
 | smart zone | 智能区 | 路由语境 |
 | context window | 上下文窗口 | 路由语境 |
 | working directory | 工作目录 | 路由语境 |
-| paper trail | 纸质记录 | 路由语境 |
+| paper trail | 落盘记录 | 路由语境 |
 | stateful | 有状态的 | 路由语境 |
 | stateless | 无状态的 | 路由语境 |
 | context | 上下文 | 路由语境 |

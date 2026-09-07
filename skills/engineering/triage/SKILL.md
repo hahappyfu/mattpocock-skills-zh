@@ -73,7 +73,7 @@ disable-model-invocation: true
 
 3. **验证声明。** 在任何访谈之前，检查声明是否成立。对于 bug，从报告者的步骤复现。对于 PR，确认 diff 做了它声称的事情：checkout 它，运行相关测试或命令。报告发生的事情：确认（附代码路径）、失败，或细节不足（这是 `needs-info` 的强烈信号）。确认的验证会产生更有力的 agent brief。
 
-4. **访谈（如果需要）。** 如果请求需要充实，调用 Skill 工具两次，分别用于"grilling"和"domain-modeling"，一轮问题一轮问题地访谈它，提炼领域术语并在决策落地时内联更新 `CONTEXT.md`/ADR。
+4. **访谈（如果需要）。** 如果请求需要充实，调用 `grilling` 与 `domain-modeling` 两个 `skill` 进行访谈，一轮问题一轮问题地访谈它，提炼领域术语并在决策落地时内联更新 `CONTEXT.md`/ADR。
 
 5. **应用结果：**
    - `ready-for-agent`: 发布 agent brief 评论（[AGENT-BRIEF.md](AGENT-BRIEF.md)）。

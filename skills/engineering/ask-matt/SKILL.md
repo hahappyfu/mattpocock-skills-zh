@@ -14,7 +14,7 @@ disable-model-invocation: true
 
 大多数工作的路径。你有一个想法，想要实现它。
 
-1. **`/grill-with-docs`** 通过访谈来打磨想法。当你**在工作目录中工作**时，从这里开始：它是有状态的（stateful），会将学到的东西保存在 `CONTEXT.md` 和 ADR 中。（没有工作目录？改用 `/grill-me`，它在独立流程部分介绍。两者都运行相同的 `/grilling` 原语；`grill-with-docs` 会留下纸质记录（paper trail），这使得它在有仓库可供保存时成为更好的选择。）
+1. **`/grill-with-docs`** 通过访谈来打磨想法。当你**在工作目录中工作**时，从这里开始：它是有状态的（stateful），会将学到的东西保存在 `CONTEXT.md` 和 ADR 中。（没有工作目录？改用 `/grill-me`，它在独立流程部分介绍。两者都运行相同的 `/grilling` 原语；`grill-with-docs` 会形成落盘记录（paper trail，写入 `CONTEXT.md` 与 ADR），这使得它在有仓库可供保存时成为更好的选择。）
 2. **分支：你能在对话中解决每个问题吗？** 如果问题需要可运行的答案（状态、业务逻辑、必须看到的 UI），就绕道原型（prototype），通过 **`/handoff`** 双向桥接（原型生活在自己的目录中，这正是 `/handoff` 的用途；参见阶段边界）：
    - **`/handoff`** 出去，然后针对该文件打开一个新会话，
    - **`/prototype`** 用一次性代码回答问题，
@@ -74,7 +74,7 @@ disable-model-invocation: true
 
 完全脱离主流程。
 
-- **`/grill-me`**：与 `/grill-with-docs` 相同的连续追问式访谈，但**无状态的（stateless）**：它不保存任何本地内容，也不构建 `CONTEXT.md`。当你**不在工作目录中工作**时使用它（打磨计划、设计、一篇文章，任何没有仓库的东西）。如果你在工作目录中，改用 `/grill-with-docs`：它运行相同的访谈并留下纸质记录，所以它严格来说是更好的选择。
+- **`/grill-me`**：与 `/grill-with-docs` 相同的连续追问式访谈，但**无状态的（stateless）**：它不保存任何本地内容，也不构建 `CONTEXT.md`。当你**不在工作目录中工作**时使用它（打磨计划、设计、一篇文章，任何没有仓库的东西）。如果你在工作目录中，改用 `/grill-with-docs`：它运行相同的访谈并形成落盘记录（写入 `CONTEXT.md` 与 ADR），所以它严格来说是更好的选择。
 - **`/grilling`** 是访谈原语本身：轮次、前沿、事实是智能体的工作，决策是你的。`/grill-me` 和 `/grill-with-docs` 是两种命名的入口，`/triage`、`/wayfinder` 和 `/improve-codebase-architecture` 都在内部运行它。只有当你想要没有包装器的访谈时才直接使用它。
 - **`/resolving-merge-conflicts`** 逐 hunk 处理进行中的合并或 rebase 冲突，通过追溯到每一方一级来源（primary source）的**意图**来解决，而不是选择行，然后完成操作。它从不运行 `--abort`。独立且脱离所有流程：当你已经在冲突中时使用它。
 - **`/prototype`** 是一个小型的一次性程序，回答一个设计问题：这个状态模型感觉对吗，或者这个 UI 应该是什么样子。一次性是对代码编写方式的约束，而不是销毁它的承诺：答案会融入真实代码，原型本身作为**一级来源（primary source）**保存在从 main 分出的 `prototype/<name>` 分支上，从实现 issue 指向。它是主流程步骤 2 中的绕道，但任何时候设计问题难以在纸上解决时都可以使用它。
