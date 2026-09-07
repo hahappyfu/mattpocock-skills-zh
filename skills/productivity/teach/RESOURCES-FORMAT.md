@@ -1,8 +1,8 @@
-# RESOURCES.md Format
+# RESOURCES.md 格式
 
-`RESOURCES.md` is the curated set of trusted sources for this topic. Knowledge for explainers should be drawn from here, not from parametric guesses. Wisdom comes from the communities listed here.
+`RESOURCES.md` 是这个主题的可信来源精选。讲解的知识从这里拿，不从参数猜测拿。智慧从这里列的社区拿。
 
-## Structure
+## 结构
 
 ```md
 # {Topic} Resources
@@ -22,11 +22,11 @@
   Use for: real-time coaching feedback on lifts.
 ```
 
-## Rules
+## 规则
 
-- **High-trust only.** Prefer primary sources, recognised experts, peer-reviewed work, and communities with strong moderation. If a resource is marketing dressed as education, leave it out.
-- **Annotate every entry.** A bare link is useless in three months. Add one line: what it covers and when to reach for it.
-- **Group by Knowledge / Wisdom.** Mirrors the philosophy in [SKILL.md](./SKILL.md). It is fine for a resource to appear in only one group.
-- **Surface gaps explicitly.** If no good resource exists for an area the mission needs, write a `## Gaps` section listing what is missing. This drives future search.
-- **Prune ruthlessly.** A resource that turned out to be wrong, shallow, or off-mission should be removed, not buried. Better five sharp sources than thirty mediocre ones.
-- **Record community preferences.** If the user has opted out of joining communities, note it here so future sessions don't keep proposing them.
+- **只收高信任。**一手来源、公认专家、同行评审产出、管得严的社区优先。营销扮教育的不要。
+- **每条都注。**光秃秃的链接三个月后没用。加一行：讲什么，什么时候用它。
+- **按知识与智慧分组。**跟 [SKILL.md](./SKILL.md) 的理念镜像。只进一组的资源没关系。
+- **缺口摆到台面上。**使命要的地方没有好资源，写 `## Gaps` 节列出缺什么。驱动以后找。
+- **狠剪。**错了、浅了、偏离使命的资源删掉，不藏着。五个准的胜过三十个平庸的。
+- **记下社区偏好。**用户说不进社区，记这里，以后的课别老推。

@@ -1,97 +1,97 @@
-## What it does
+## 它做什么
 
-`teach` turns the directory you run it in into a standing teaching workspace and teaches you one topic across many [sessions](https://www.aihero.dev/ai-coding-dictionary/session), in short self-contained HTML lessons.
+`teach` 把你运行它的目录变成常驻教学工作区，用短小自包含的 HTML 课跨多个[会话（session）](https://www.aihero.dev/ai-coding-dictionary/session)教你一个主题。
 
-It does not teach from what the [model](https://www.aihero.dev/ai-coding-dictionary/model) already knows. [Parametric knowledge](https://www.aihero.dev/ai-coding-dictionary/parametric-knowledge) is treated as untrusted: before it teaches, it goes and finds high-trust resources, records them in `RESOURCES.md`, and cites them inside every lesson. The other structural fact is that it is [stateful](https://www.aihero.dev/ai-coding-dictionary/stateful): the mission, the resources, the lessons and the record of what you have learned all live in the directory as files, so the next session picks up from those files rather than from whatever is left of the last conversation.
+它不用[模型（model）](https://www.aihero.dev/ai-coding-dictionary/model)已知的东西教学。参数知识（parametric knowledge）当不可信处理：开教之前先找高信任资源，记进 `RESOURCES.md`，每课引用。另一个结构事实是它**有状态的（stateful）**：使命、资源、课和学到什么的记录都以文件住在目录里，下一场会话从这些文件续上，而不是从上场对话剩下的东西续上。
 
-## When to reach for it
+## 何时使用
 
-You invoke this by typing `/teach`; the [agent](https://www.aihero.dev/ai-coding-dictionary/agent) won't reach for it on its own.
+输入 `/teach` 即可调用；[智能体（agent）](https://www.aihero.dev/ai-coding-dictionary/agent)不会主动调用它。
 
-Reach for it when the learning is the project: a language, a framework, a codebase you have just joined, yoga, shaders, a certification. It is not the tool for one explanation in passing.
+学习本身就是项目时用它：一门语言、一个框架、刚加入的代码库、瑜伽、shader、一门认证。顺手讲一句别用它。
 
-| What you want | What to reach for |
+| 你想要 | 用这个 |
 | --- | --- |
-| To learn a topic over weeks, with sessions that accumulate | `teach` |
-| One idea explained inside the session you are already in | Just ask, in that session |
-| The agent's last message re-pitched because it didn't land | [wait-what](https://aihero.dev/skills-wait-what) |
-| To sharpen thinking you already have, rather than acquire new material | [grill-me](https://aihero.dev/skills-grill-me) |
-| A background agent to read [primary sources](https://www.aihero.dev/ai-coding-dictionary/primary-source) and leave you a cited document | [research](https://aihero.dev/skills-research) |
-| To learn something that came up mid-grilling, without derailing the [grilling](https://www.aihero.dev/ai-coding-dictionary/grilling) | [handoff](https://aihero.dev/skills-handoff) out to a teaching workspace, then `teach` there |
+| 用几周学一个主题，课越攒越多 | `teach` |
+| 在当前会话里讲清一个概念 | 直接在那场会话里问 |
+| 智能体上一句话没听懂，让它重讲 | [wait-what](https://aihero.dev/skills-wait-what) |
+| 打磨已有想法，而不是拿新东西 | [grill-me](https://aihero.dev/skills-grill-me) |
+| 后台智能体读[一级来源（primary source）](https://www.aihero.dev/ai-coding-dictionary/primary-source)留一份带引用的文档 | [research](https://aihero.dev/skills-research) |
+| 访谈中冒出要学的东西，不想打断 [grilling](https://www.aihero.dev/ai-coding-dictionary/grilling) | [handoff](https://aihero.dev/skills-handoff) 到教学工作区，那边 `teach` |
 
-## Prerequisites
+## 前置条件
 
-`teach` builds a directory rather than producing a file, and the skill assumes one mission per workspace, so run it somewhere you are happy to give over to a single topic. Keep it out of the project you are working in: a separate repo is the recommended home, rather than a global `~/.learnings/` folder or the working project itself. A dedicated repo also makes the lessons committable, which is how teams have shared them.
+`teach` 建目录不产文件，一个工作区只认一个使命，所以在能交给单个主题的地方运行。别放进正在干活的项目：单独开仓库是推荐做法，别用全局 `~/.learnings/` 文件夹，也别直接用工作项目。独立仓库还能提交课，团队就这么分享。
 
-What accumulates in that directory:
+目录里会攒下这些：
 
-| Path | What it holds |
+| 路径 | 里面是什么 |
 | --- | --- |
-| `MISSION.md` | Why you are learning this. Everything else hangs off it; if it is missing, the first thing `teach` does is interview you until it isn't |
-| `RESOURCES.md` | The vetted sources it teaches from, split into Knowledge and Wisdom (communities) |
-| `lessons/*.html` | The numbered lessons: the primary unit of teaching |
-| `reference/*.html` | Compressed cheat-sheets, algorithms, glossaries: the documents you actually return to |
-| `learning-records/*.md` | ADR-style notes on what you have demonstrably learned, used to decide what to teach next |
-| `assets/*` | Reusable components, starting with a shared stylesheet, so the lessons look like one course |
-| `NOTES.md` | Your stated teaching preferences |
+| `MISSION.md` | 为什么学这个。别的都挂它下面；缺了它，`teach` 第一件事就是访谈你直到有为止 |
+| `RESOURCES.md` | 经审核的来源，分知识与智慧（社区）两块 |
+| `lessons/*.html` | 编号课，教学的基本单位 |
+| `reference/*.html` | 压缩速查表、算法、词汇表，真正会回翻的文档 |
+| `learning-records/*.md` | ADR 式笔记，记你切实学会了什么，决定下节教什么 |
+| `assets/*` | 可复用组件，先有共享样式表，让课看起来像一门课 |
+| `NOTES.md` | 你说过的教学偏好 |
 
-Two honest notes on that list. A glossary suits most topics, but the skill ships a `GLOSSARY-FORMAT.md` that `SKILL.md` no longer links to, so you will only get one if you ask ([issue #559](https://github.com/mattpocock/skills/issues/559)). And the workspace is not always created where you expect, so see the first question below before you build a long course on top of it.
+名单上有两句实话。多数主题配词汇表合适，但 skill 自带的 `GLOSSARY-FORMAT.md` 已经没有 `SKILL.md` 链它，你开口要才有（[issue #559](https://github.com/mattpocock/skills/issues/559)）。工作区也不总建在你以为的地方，长课搭上去之前先看下面第一个问题。
 
-## Storage strength, not fluency
+## 存储强度，不拼流畅度
 
-The word to think with is **storage strength**: long-term retention, as opposed to **fluency**, the in-the-moment recall that feels like mastery while you are reading and is gone a week later. `teach` builds the former through desirable difficulty: retrieval practice, spacing, interleaving. Knowledge comes first, where difficulty is the enemy because it eats the working memory you need in order to understand; then the skill is drilled through a tight feedback loop, where difficulty is the tool.
+想的时候认准**存储强度（storage strength）**这个词：长期留存，对应**流畅度（fluency）**，读着会、过一周没的那种当场回忆。`teach` 用合意难度建前者：提取练习、间隔练习、交错练习。知识先行，那里难度是敌人，吃掉你理解用的工作记忆；然后 skill 用紧 feedback loop 操练，那里难度是工具。
 
-Two things steer what you get taught. The **mission** (the concrete real-world reason you want this) grounds every lesson; without it the lessons drift abstract and nothing decides what comes next. From the mission and the learning records, `teach` picks the next lesson inside your **zone of proximal development**: challenging enough to take effort, not so far ahead that it stops being learnable.
+教你什么由两样东西定。**使命**（要这个的实打实现实原因）给每课垫底；没它课就飘，下节教什么也没人拍板。从使命和学习记录出发，`teach` 在你的**最近发展区（zone of proximal development）**里挑下节课：费点劲够得着，别远到学不动。
 
-It is also why the skill pushes back rather than obliges. A question that needs **wisdom** (real-world judgement) gets an attempted answer and then a pointer to a community where you can test it. A quiz is a gate, not a formality: one user reported saying "thanks a lot" and being told the drill was still live.
+这也是 skill 顶回去而不顺着的原因。问到要**智慧**（真实世界判断）先试着答，再指一个能去试的社区。测验是门禁，不是过场：有用户说了句"多谢"被告知操练还没过。
 
-## Lessons, references and components
+## 课、参考与组件
 
-A **lesson** is one self-contained HTML file, short enough to finish in a sitting, tied to the mission, giving one tangible win. It cites its sources, recommends one primary source to go and read yourself, and links to sibling lessons and reference documents.
+**课（lesson）**是一个自包含 HTML 文件，一次坐定能学完，扣使命，给一个实在收获。带来源引用，推荐一个值得自己去读的一级来源，链兄弟课和参考文档。
 
-The split worth knowing: lessons are rarely revisited, reference documents are. So the compressed essence of a lesson (the syntax table, the algorithm, the pose sequence, the glossary) belongs in `reference/`, not buried in the lesson that introduced it.
+值得知道的分工：课很少回翻，参考文档会。所以课的压缩精华（语法表、算法、体式序列、词汇表）住 `reference/`，不埋在介绍它的课里。
 
-Lessons are built from **components** in `assets/`: stylesheets, quiz widgets, simulators, diagram helpers. Reuse is the default. The agent reads `assets/` before authoring a lesson and builds from what is there, and anything new that a second lesson could use is written as a component rather than inlined. The shared stylesheet is the first component every workspace earns; it is what stops the output being a pile of one-offs.
+课由 `assets/` 里的**组件**搭成：样式表、测验挂件、模拟器、图表小工具。复用是默认。智能体写课之前读 `assets/`，用现成的搭，第二课能用的新东西写成组件不内联。共享样式表是每个工作区挣到的第一个组件，它让产出不至于是一堆一次性。
 
-## Common questions
+## 常见问题
 
-**Where does it put the files? Mine ended up in `~/.claude/skills`.**
-A real, open bug ([#377](https://github.com/mattpocock/skills/issues/377)). `SKILL.md` uses `./` for two different roots at once: `./MISSION-FORMAT.md` and its siblings really do sit next to `SKILL.md` in the installed skill, while `./lessons/`, `./reference/`, `./learning-records/` and `./assets/` are meant to be in your directory. An agent that resolves the first kind against the skill's install directory goes on to resolve the second kind there too, and writes your course into the skill folder. Check where the first lesson landed before you build on it, and name the directory explicitly when you start rather than relying on "the current directory" being understood.
+**文件放哪了？我 的落到 `~/.claude/skills` 里了。**
+真实存在的开放 bug（[#377](https://github.com/mattpocock/skills/issues/377)）。`SKILL.md` 把 `./` 当两个根用：`./MISSION-FORMAT.md` 这些确实住在安装 skill 旁的 `SKILL.md` 边上，`./lessons/`、`./reference/`、`./learning-records/` 和 `./assets/` 该住你的目录。智能体按 skill 安装目录解了第一种，会连第二种一起解错，把你的课写进 skill 文件夹。搭长课之前先看第一课落哪了，开场直接点名目录，别指望"当前目录"被听懂。
 
-**Do I stay in one session, or start a new one per lesson?**
-All three approaches work: staying in the same session, re-invoking `/teach` in a new session, or opening a new session in the same folder. Each lesson is its own invocation. The folder is the continuity, not the conversation. Common practice is to open a fresh session in the workspace and say `/teach next lesson for <topic>`.
+**一节一会话，还是多节一会话？**
+三种都行：同会话待着、新会话重调 `/teach`、同文件夹开新会话。每课一次调用。文件夹是连续性，对话不是。常见做法是在工作区开新会话说一句 `/teach next lesson for <topic>`。
 
-**How do I know it isn't teaching me something it made up?**
-You don't, on the skill's word alone. You read the primary sources. `teach` is not reliable enough to trust unchecked, and no skill built on an LLM is. The grounding machinery (`RESOURCES.md`, citations in every lesson, one recommended primary source per lesson) exists to make verification cheap, not to remove the need for it. The failure is not hypothetical: one user learning a 2x2 Rubik's cube was given fabricated move sequences that don't solve it. The diagnostic checklist for a case like that is model, harness, effort, and what the source was. Risk is highest in procedural domains with precise notation, and lowest where the output is immediately verifiable, like code you can run.
+**怎么知道它没在现编教我？**
+光听 skill 的不行。读一级来源。`teach` 没可靠到能闭眼信，基于 LLM 的 skill 都没到。接地机制（`RESOURCES.md`、每课引用、每课推荐一个一级来源）让验证便宜不断，不是不用验证。失败不是假设：有用户学二阶魔方拿到走不通的编造公式。这种 case 的诊断单是模型、harness、投入和来源。符号精确的流程性领域风险最高，产出能立刻验证的领域（比如能跑的代码）风险最低。
 
-**The correct quiz answer is always the first option.**
-Confirmed by several people, on Sonnet, on Opus and on GLM, and still unfixed. `SKILL.md` now requires every answer to be the same number of words, which kills a different tell (the correct answer used to be the only fully-reasoned one), but says nothing about position. One contributor tested an instruction-level fix for position and reported the correct answer still landing in slot A 33 times out of 33 across nine lessons ([#335](https://github.com/mattpocock/skills/issues/335)), which points at a shuffling quiz component in `assets/` as the real fix rather than better wording. Until that ships, treat answer position as meaningless. Your `assets/` directory is yours to change, so asking for a component that shuffles at render time is a legitimate local fix.
+**测验正确答案永远是第一个选项。**
+几拨人确认过，Sonnet、Opus、GLM 上都有，没修。`SKILL.md` 现在要求选项词数相同，杀的是另一种马脚（正确答案曾是唯一充分论证的那个），位置没管。有贡献者测过指令级 fix，九课里正确答案 33 次全落 A 位（[#335](https://github.com/mattpocock/skills/issues/335)），指向 `assets/` 里缺一个渲染时洗牌的测验组件，而不是措辞问题。修好之前位置信息作废。`assets/` 目录归你改，要一个渲染时洗牌的组件是合法本地 fix。
 
-**It assumed I already knew things, and used terms it never defined.**
-The commonest substantive complaint. There is no assessment step: `teach` infers your level from the mission and the learning records, and in session one there are no learning records. One user running it inside a wayfinder pipeline put it plainly: "It never did grilling to establish my starting point so it made lots of assumptions of what I already knew." Another reported lessons leaning on undefined jargon, and a lesson tailored to their hardware that covered what the hardware could do while never saying what it couldn't. Two things help: state your prior knowledge and your gaps in the first message, and correct the level out loud when a lesson misses, because the correction becomes a learning record and steers the next one. An explicit knowledge-assessment step is a standing feature request ([#725](https://github.com/mattpocock/skills/issues/725)), not shipped behaviour.
+**它默认我会很多，用没定义的词。**
+最常见的实质抱怨。没有摸底步骤：`teach` 从使命和学习记录推你的水平，第一课时学习记录是空的。有用户在 wayfinder 流水线里跑原话是："它从没 grilling 摸我的起点，假设了一堆我会的。"还有人报课倚着没定义的黑话，报给硬件定制的课讲了硬件能干什么、能干什么没说什么。两件事有用：第一句话就报先验知识和缺口，课跑偏当场纠正水平，纠正会变成学习记录牵引下一课。显式知识摸底是长期挂着的功能请求（[#725](https://github.com/mattpocock/skills/issues/725)），没发货。
 
-**Does it do spaced repetition, and does it know when to stop teaching?**
-No to the first, and not reliably to the second. Spacing and interleaving are principles the lessons are designed against, but nothing schedules a review, and there is no Anki or calendar integration; both are recurring requests. The related gap is exit criteria: as one user put it, `teach` "is good at making the next lesson, but not as good at knowing when to stop and switch to review or real practice." If you want review or drilling instead of new material, ask for it; the skill will not propose the switch on its own.
+**它管间隔重复吗，知道何时停吗？**
+第一问不，第二问不稳。间隔和交错是课的设计原则，没有排复习的东西，也没接 Anki 或日历，都是反复出现的请求。相关缺口是退出标准：有用户原话，`teach` "下节课很会出，何时停下来复习或实练不太会。"想要复习或操练直接要，skill 不会自己提换挡。
 
-**Is it only useful for code?**
-No, and the non-coding use is the larger part of the record: Korean, Japanese formal register, piano, guitar, board game design, OpenSCAD, film plots, Azure and CCNA certifications, university exams, and children of eight and ten getting printable books on escape rooms and fire salamanders. Nothing in the skill is programming-specific: mission, resources, zone of proximal development and drill work the same way in any domain. Within code, the strongest reported use is not learning a language from scratch but getting oriented in an unfamiliar codebase or a new team's stack.
+**只对代码有用？**
+不，非代码用例是记录里更大的部分：韩语、日语敬语、钢琴、吉他、桌游设计、OpenSCAD、电影剧情、Azure 和 CCNA 认证、大学考试，还有八岁十岁小孩的可打印小书，主题是密室逃脱和火蜥蜴。skill 里没有一行编程专用：使命、资源、最近发展区和操练在任何领域一样转。代码圈里报得最强的用法不是从零学语言，而是在陌生代码库或新团队技术栈里找北。
 
-**Which model should I run it with?**
-There is no canonical answer, and the reported differences are large. Higher [reasoning effort](https://www.aihero.dev/ai-coding-dictionary/effort) has been reported to produce noticeably better lessons than the medium setting. One user ran the same skill through Copilot CLI with Codex and got a single 30-line HTML card where Claude Code produced a full lesson. It runs unmodified in Claude Cowork, subject to whether your organisation allows skills to be added there. If the lessons come out thin, change model, [harness](https://www.aihero.dev/ai-coding-dictionary/harness) or effort before rewriting your prompt.
+**配什么模型跑？**
+没有正解，报出来的差距很大。高[推理投入（reasoning effort）](https://www.aihero.dev/ai-coding-dictionary/effort)出的课据报明显好过中档。有用户同 skill 经 Copilot CLI 用 Codex 跑出 30 行 HTML 卡片，Claude Code 出整课。Claude Cowork 里免改能跑，看你组织让不让加 skill。课出薄了先换模型、[harness](https://www.aihero.dev/ai-coding-dictionary/harness)或投入，别先改提示词。
 
-## It's working if
+## 达标表现
 
-- The first thing it does in an empty directory is interview you about why you want this, rather than produce a lesson.
-- `RESOURCES.md` fills up before the lessons do, and each lesson names one primary source worth reading yourself.
-- Claims in a lesson carry links out. A lesson with no citations is the skill teaching from memory.
-- A lesson takes one sitting and leaves you able to do one thing you couldn't before.
-- Opening a fresh session in the folder and saying "next lesson" continues the course instead of restarting it.
-- `learning-records/` grows, and lessons stop re-teaching what you have already demonstrated.
-- The lessons look like one course: they link the stylesheet in `assets/` rather than each carrying its own.
-- A question that needs judgement gets you pointed at a forum, subreddit or class, not just an answer.
+- 空目录第一件事是访谈你为什么要这个，而不是产课。
+- `RESOURCES.md` 先满，课后满，每课点名一个值得自己去读的一级来源。
+- 课里断言带链子出去。没引用的课就是 skill 在凭记忆教。
+- 一课一次坐定，出来时会一件原来不会的事。
+- 文件夹里开新会话说一句"下节课"，课续上不重开。
+- `learning-records/` 在长，切实会的东西课不再重教。
+- 课看起来像一门课：链 `assets/` 里的样式表，不各背各的。
+- 要判断的问题把你指给论坛、subreddit 或线下课，不止给答案。
 
-## Where it fits
+## 它的位置
 
-`teach` is a **reach-for-it-anytime standalone**. It is not a step in a build chain and shares no artifacts with the engineering flow; it owns its directory and lives there for as long as the topic lasts.
+`teach` 是**随时可用的独立流程**。不在构建链里，跟工程流不共享 artifact，占住自己的目录，主题在它就在。
 
-Its one real neighbour is [handoff](https://aihero.dev/skills-handoff), through the composition Matt named as the answer to "what do I do if I'm being grilled about something I don't understand?": don't stop the grilling to learn: `/handoff` to a teaching workspace, learn it there with `/teach`, then go back and pick up where you left off. The nearby alternative is [research](https://aihero.dev/skills-research), for when what you want is a cited document rather than lessons and retention. When you are not sure which skill or flow fits, [ask-matt](https://aihero.dev/skills-ask-matt) routes you over the whole set.
+它唯一真邻居是 [handoff](https://aihero.dev/skills-handoff)，经 Matt 点名的组合回答"访谈中撞上不懂的东西怎么办"：别停下访谈去学，`/handoff` 到教学工作区，那边 `/teach` 学完回来续上。附近替代是 [research](https://aihero.dev/skills-research)，想要带引用的文档而不是课和留存时用。拿不准哪个 skill 或流程合适，[ask-matt](https://aihero.dev/skills-ask-matt) 带你走全集。

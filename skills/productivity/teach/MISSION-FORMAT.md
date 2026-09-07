@@ -1,8 +1,8 @@
-# MISSION.md Format
+# MISSION.md 格式
 
-`MISSION.md` lives at the workspace root. It captures the _reason_ the user is learning this topic. Every teaching decision (what to teach next, which resources to surface, which exercises to design) should trace back to this document.
+`MISSION.md` 住在工作区根目录。记录用户学这个主题的_原因_。每个教学决策（下节教什么、推什么资源、设计什么练习）都要能追溯到这篇文档。
 
-## Template
+## 模板
 
 ```md
 # Mission: {Topic}
@@ -22,10 +22,10 @@
 - {Adjacent topics the user explicitly does not want to chase right now, protecting the zone of proximal development}
 ```
 
-## Rules
+## 规则
 
-- **One mission per workspace.** If the user wants to learn two unrelated things, that is two workspaces.
-- **Concrete over abstract.** "Run a half marathon by October" beats "get fitter." "Ship a Rust CLI to my team" beats "learn Rust."
-- **Push back on vagueness.** If the user cannot articulate why, interview them before writing anything. A bad mission is worse than no mission.
-- **Revise when reality shifts.** Missions change. When the user's goal moves, update this file: don't leave a stale mission steering future sessions.
-- **Keep it short.** If `MISSION.md` runs past a screen, it has stopped being a compass and started being a plan.
+- **一工作区一使命。**用户想学两个不相干的东西，就是两个工作区。
+- **具体压倒抽象。**"十月前跑完半马"胜过"更健康"。"给团队交付一个 Rust CLI"胜过"学 Rust"。
+- **含糊就顶回去。**用户说不清为什么，落字之前先访谈。坏使命不如没使命。
+- **现实变了就改。**使命会变。用户目标动了就更新文件，别让过期使命指挥以后的课。
+- **保持短。**`MISSION.md` 超出一屏，它就不再是指南针，变成计划了。
