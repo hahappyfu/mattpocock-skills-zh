@@ -1,22 +1,22 @@
 ---
 name: to-spec
-description: "Turn the current conversation into a spec and publish it to the project issue tracker: no interview, just synthesis of what you've already discussed."
+description: "将当前对话转为规格说明（spec），发布到项目 issue tracker：不访谈，只综合已讨论内容。"
 disable-model-invocation: true
 ---
 
-This skill takes the current conversation context and codebase understanding and produces a spec. Do NOT interview the user; just synthesize what you already know.
+本技能接收当前对话上下文和代码库理解，生成一份规格说明（spec）。不要访谈用户，只综合你已知的内容。
 
-The issue tracker and triage label vocabulary should have been provided to you. If not, tell the user to run `/setup-matt-pocock-skills`.
+issue tracker 和 triage label 词汇表应该已经提供给你。如果没有，提示用户运行 `/setup-matt-pocock-skills`。
 
 ## Process
 
-1. Explore the repo to understand the current state of the codebase, if you haven't already. Use the project's domain glossary vocabulary throughout the spec, and respect any ADRs in the area you're touching.
+1. 探索仓库，了解代码库的当前状态（如果尚未完成）。在整个规格说明中使用项目的领域语言词汇表，并遵循你触及区域的任何 ADR。
 
-2. Sketch out the seams at which you're going to test the feature. Existing seams should be preferred to new ones. Use the highest seam possible. If new seams are needed, propose them at the highest point you can. The fewer seams across the codebase, the better - the ideal number is one.
+2. 勾勒你将测试功能的接缝（seam）。应优先使用已有接缝而非新建。使用尽可能高的接缝。如果需要新接缝，提议尽可能高的位置。代码库中的接缝越少越好，理想数量是一个。
 
-Check with the user that these seams match their expectations.
+与用户确认这些接缝符合他们的预期。
 
-3. Write the spec using the template below, then publish it to the project issue tracker. Apply the `ready-for-agent` triage label - no need for additional triage.
+3. 使用下方模板编写规格说明，然后发布到项目 issue tracker。应用 `ready-for-agent` triage label，无需额外 triage。
 
 <spec-template>
 

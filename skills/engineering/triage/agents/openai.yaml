@@ -1,5 +1,5 @@
 interface:
   display_name: "Triage"
-  short_description: "Move issues through triage roles"
+  short_description: "通过 triage 角色流转 issue"
 policy:
   allow_implicit_invocation: false

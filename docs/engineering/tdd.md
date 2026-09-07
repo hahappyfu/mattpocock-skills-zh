@@ -1,94 +1,94 @@
-## What it does
+## 它做什么
 
-`tdd` builds a feature or fixes a bug test-first: one failing test, then just enough code to pass it, then the next behaviour. It carries the standards that make that loop produce tests worth keeping: what a good test is, where tests go, what mocks are for, and the three anti-patterns that quietly ruin a suite.
+`tdd` 先写测试再构建功能或修复 bug：一个失败的测试，然后刚好通过它的代码，再下一个行为。它携带的规范让这个循环产出值得保留的测试：什么是好的测试、测试放哪、mock 用来做什么、以及那三个悄悄毁掉测试套件的反模式。
 
-It writes no test at a seam you have not agreed to first. Before any test exists, it names the public boundaries it intends to test at and stops for your confirmation, because testing effort is finite and this is where you spend it on the critical paths instead of on every edge case. The other thing to know is that `tdd` is a **reference**, not a driver. It holds the rules of the loop, and something else (you, or [implement](https://aihero.dev/skills-implement)) runs the [session](https://www.aihero.dev/ai-coding-dictionary/session) that applies them.
+它不会在你没有事先商定的接缝处写测试。在任何测试存在之前，它会列出打算测试的公开边界并停下来等你确认，因为测试工作量有限，你要把精力花在关键路径上而不是每个边界情况。另一点要知道的是，`tdd` 是**参考**，不是驱动者。它持有循环规则，而由别的东西（你或 [implement](https://aihero.dev/skills-implement)）运行应用这些规则的 [session](https://www.aihero.dev/ai-coding-dictionary/session)。
 
-## When to reach for it
+## 何时使用
 
-Type `/tdd`, or the [agent](https://www.aihero.dev/ai-coding-dictionary/agent) reaches for it automatically when a task fits: building a feature or fixing a bug test-first, or when you say "red-green-refactor".
+输入 `/tdd`，或 [agent](https://www.aihero.dev/ai-coding-dictionary/agent) 在任务匹配时自动调用它：先写测试再构建功能或修复 bug，或当你说 "red-green-refactor" 时。
 
-Reach for it when there is a concrete behaviour to build, with an input and an observable output, and you want tests that survive a refactor.
+当有具体的行为要构建，有输入和可观察的输出，并且你想要在重构后依然成立的测试时，使用它。
 
-| Your situation | Where to go |
+| 你的场景 | 去哪 |
 | --- | --- |
-| A behaviour with defined inputs and outputs (business logic, a request/response contract, a transformation, validation) | `tdd` |
-| The behaviour isn't pinned down yet | [to-spec](https://aihero.dev/skills-to-spec), which also agrees the test seams before any code is written |
-| The question is really the shape of the interface, not the tests | [codebase-design](https://aihero.dev/skills-codebase-design) |
-| You have a [spec](https://www.aihero.dev/ai-coding-dictionary/spec) or [tickets](https://www.aihero.dev/ai-coding-dictionary/ticket) and want the whole build run for you | [implement](https://aihero.dev/skills-implement), which drives `tdd` per ticket |
-| Config, wiring, glue, type annotations, straight CRUD delegation | Nothing here fits well; see the open gap below |
+| 有明确定义输入和输出的行为（业务逻辑、请求/响应契约、转换、验证） | `tdd` |
+| 行为还没有确定下来 | [to-spec](https://aihero.dev/skills-to-spec)，它也会在写代码之前商定测试接缝 |
+| 问题其实是接口的形状，而不是测试 | [codebase-design](https://aihero.dev/skills-codebase-design) |
+| 你有 [spec](https://www.aihero.dev/ai-coding-dictionary/spec) 或 [ticket](https://www.aihero.dev/ai-coding-dictionary/ticket)，想让整个构建过程自动运行 | [implement](https://aihero.dev/skills-implement)，它按 ticket 驱动 `tdd` |
+| 配置、接线、胶水代码、类型注解、纯 CRUD 委托 | 这里没有合适的；见下方的缺口 |
 
-That last row is a real hole, not a stylistic preference. The skill decides *where* the seams go; nothing in it decides *whether* a change is worth the loop at all. Run it on a change with no independent source of truth to assert against and you get a test that restates the implementation: the tautological anti-pattern the skill itself warns about, arrived at from the other direction. It is [issue #746](https://github.com/mattpocock/skills/issues/746) and it is open. Until it closes, that judgement is yours or your `CLAUDE.md`'s.
+最后一行是一个真实的缺口，不是风格偏好。这个 skill 决定接缝*放在哪*；它不决定一个变更*是否值得*跑循环。在一个没有独立事实来源可断言的变更上运行它，你会得到一个复述实现的测试：skill 本身警告的同义反复反模式，从另一个方向得出同样的反模式。这是 [issue #746](https://github.com/mattpocock/skills/issues/746)，仍处于 open 状态。在它关闭之前，这个判断归你或你的 `CLAUDE.md`。
 
-## Prerequisites
+## 前置条件
 
-[codebase-design](https://aihero.dev/skills-codebase-design) needs to be installed. `tdd` used to carry its own deep-module and interface-design notes; in v1.0 those were deleted in favour of the shared skill, and `tdd` now leans on it for interface-design vocabulary. Nothing else; the skill is [stateless](https://www.aihero.dev/ai-coding-dictionary/stateless) and writes no files of its own.
+需要安装 [codebase-design](https://aihero.dev/skills-codebase-design)。`tdd` 曾自带深度模块和接口设计说明；在 v1.0 中这些被删除，改用共享 skill，`tdd` 现在依赖它获取接口设计词汇。没有别的了；这个 skill 是[无状态的](https://www.aihero.dev/ai-coding-dictionary/stateless)，不写自己的文件。
 
-## The loop, and the seam it runs at
+## 循环，以及它运行的接缝
 
-Three words carry this skill.
+三个词承载这个 skill。
 
-**Red-green.** Write the failing test, then only enough code to pass it. No anticipating the test after next. There is no refactor phase: it was dropped in June 2026 because agents essentially never performed it, and because review and implementation work better as separate sessions. Refactoring belongs to [code-review](https://aihero.dev/skills-code-review).
+**Red-green。**写失败的测试，然后只写刚好通过的代码。不预想下一个测试。没有重构阶段：它在 2026 年 6 月被移除，因为 agent 基本上从不执行它，而且审查和实现作为单独的 session 效果更好。重构属于 [code-review](https://aihero.dev/skills-code-review)。
 
-**Vertical slice.** One seam, one test, one minimal implementation, then repeat, the first cycle being a **tracer bullet** that proves a single path end to end. The opposite is horizontal slicing: all the tests first, then all the code. Bulk tests verify *imagined* behaviour, they check the shape of things rather than what a user does, and they commit you to a test structure before you understand the implementation.
+**纵向切分（Vertical slice）。**一个接缝、一个测试、一个最小实现，然后重复，第一个周期是一发 **tracer bullet**，端到端证明单条路径。反面是横向切分（horizontal slicing）：先写所有测试，再写所有代码。批量测试验证的是*想象中的*行为，它们检查事物的形状而不是用户做什么，并且在你理解实现之前就锁定了测试结构。
 
-**Pre-agreed seam.** A seam is the public boundary you observe behaviour at without reaching inside. The rule is absolute: no test at an unconfirmed seam. In the full chain the seams are agreed earlier, during [to-spec](https://aihero.dev/skills-to-spec): "`/tdd` is told to only work at pre-agreed test seams, `/code-review` checks that only agreed-upon test seams were used." Invoked on its own, `tdd` asks you directly.
+**预先商定的接缝（Pre-agreed seam）。**接缝是你观察行为但不深入内部的公开边界。规则是绝对的：不在未确认的接缝处写测试。在完整链路中，接缝是更早商定的，在 [to-spec](https://aihero.dev/skills-to-spec) 阶段："`/tdd` 被告知只在预先商定的测试接缝处工作，`/code-review` 检查只使用了商定的接缝。"单独调用时，`tdd` 直接问你。
 
-The three anti-patterns it is written to prevent:
+它被写来防止的三个反模式：
 
-| Anti-pattern | The tell |
+| 反模式 | 特征 |
 | --- | --- |
-| Implementation-coupled | The test breaks when you rename an internal function, though behaviour did not change. Mocked internal collaborators, asserted call counts, database queries used to verify instead of the interface. |
-| Tautological | The expected value is computed the way the code computes it, so the test passes by construction. Expected values have to come from somewhere else: a known-good literal, a worked example, the spec. |
-| Horizontal slicing | A batch of tests landed before any implementation. |
+| 实现耦合（Implementation-coupled） | 你重命名一个内部函数时测试失败，但行为没有改变。mock 了内部协作者、断言调用次数、用数据库查询而非接口来验证。 |
+| 同义反复（Tautological） | 期望值用代码相同的方式计算，所以测试构造上必然通过。期望值必须来自别处：已知正确的字面值、具体示例、规格说明。 |
+| 横向切分（Horizontal slicing） | 一批测试在任何实现之前就落地了。 |
 
-Mocks are for system boundaries only: external APIs, time, randomness, sometimes the filesystem or the database. Not your own modules.
+Mock 只用于系统边界：外部 API、时间、随机性、有时是文件系统或数据库。不是你自己的模块。
 
-## Common questions
+## 常见问题
 
-**Why doesn't it refactor? The description says "red-green-refactor".**
+**为什么它不重构？描述里写了 "red-green-refactor"。**
 
-Because the refactor step was removed and the description was not. The removal was deliberate: agents essentially never did it, and keeping implementation and review in separate sessions works better. Whether the result still counts as TDD by the book matters less than whether the loop produces better code. The mismatch between the trigger phrase and the body is filed as [issue #589](https://github.com/mattpocock/skills/issues/589) and is still open, so "red-green-refactor" continues to work as a phrase that fires the skill. What you get is red → green, and refactoring in [code-review](https://aihero.dev/skills-code-review).
+因为重构步骤被移除了但描述没有。移除是有意的：agent 基本上从不执行它，把实现和审查放在不同 session 中效果更好。结果是否还算教科书式的 TDD 不如循环是否产出更好的代码重要。触发短语和正文之间的不匹配作为 [issue #589](https://github.com/mattpocock/skills/issues/589) 提出，仍处于 open 状态，所以 "red-green-refactor" 继续作为触发 skill 的短语生效。你得到的是 red → green，重构在 [code-review](https://aihero.dev/skills-code-review) 中。
 
-**It asked me to choose a test seam and I had no idea which to pick.**
+**它让我选一个测试接缝，我不知道选哪个。**
 
-This is the most-reported friction with the skill ([issue #607](https://github.com/mattpocock/skills/issues/607)). The prompt lists candidate seams by name only, with nothing about what each one catches or misses, so you are choosing between labels. There is no fix shipped yet. The practical workaround is to ask the agent for the trade-offs before answering: what does the component-level seam miss that the integration seam catches, and how much slower is it. It is also why the chain agrees seams up front in `to-spec`, where you have the whole feature in view rather than one prompt.
+这是这个 skill 被报告最多的摩擦（[issue #607](https://github.com/mattpocock/skills/issues/607)）。提示只按名称列出候选接缝，没有说明每个接缝能捕获什么或漏掉什么，所以你在标签之间选。目前没有修复。实用的变通方法是在回答之前问 agent 利弊：组件级接缝漏掉了什么而集成接缝捕获了，慢多少。这也是为什么链路在 `to-spec` 中预先商定接缝，在那里你能看到整个功能而不是一个提示。
 
-**It wrote the implementation before the test, even though the skill says red first.**
+**它先写了实现再写测试，尽管 skill 说 red 在先。**
 
-It happens. One user pushed the [model](https://www.aihero.dev/ai-coding-dictionary/model) on it and got an unusually honest answer: "I knew the skill said 'one test at a time, watch it fail for the right reason'. I read it. I just defaulted to my normal habit." The skill is written to live with this. No instruction makes an agent comply 100% of the time, and forcing the point harder restricts the agent's creativity for little gain; the loop is worth running even when it is not followed strictly, because the results are still better overall. If strict adherence matters for a particular slice, watch the run rather than trusting the skill to enforce it.
+这会发生。一个用户追着 [model](https://www.aihero.dev/ai-coding-dictionary/model) 问，得到了一个异常诚实的回答："我知道 skill 说 '一次一个测试，让它因为正确的理由失败'。我读了。我只是默认了我平常的习惯。"skill 是写来容忍这件事的。没有指令能让 agent 100% 遵从，强行要求更严会限制 agent 的创造力而收益甚微；即使没有严格遵循，循环也值得运行，因为总体结果仍然更好。如果严格遵循对某个 slice 很重要，盯着运行而不是信任 skill 去执行。
 
-**Should it write browser or end-to-end tests first?**
+**它应该先写浏览器测试或端到端测试吗？**
 
-Usually not, and the skill will not stop it. A user reported the agent writing a Playwright test first, then burning a long loop re-running it and concluding the *test* was broken for a feature that did not exist yet. Configure this in your `CLAUDE.md`. Browser tests are slow enough that the red-green feedback loop stops paying for itself; declare in your repo's `CLAUDE.md` that they are written after the behaviour works.
+通常不应该，skill 也不会阻止。一个用户报告 agent 先写了 Playwright 测试，然后花很长时间循环重跑它，得出*测试*对一个尚不存在的功能有 bug 的结论。在你的 `CLAUDE.md` 中配置这个。浏览器测试太慢，red-green 反馈循环入不敷出；在你仓库的 `CLAUDE.md` 中声明浏览器与端到端测试在行为能跑通之后再写。
 
-**Does `/tdd` replace `/implement`, or the course's `/do-work`?**
+**`/tdd` 替代 `/implement` 吗，还是课程的 `/do-work`？**
 
-No. `/tdd` documents the methodology; `/implement` is a very simple work→feedback→commit loop and is the direct stand-in for `/do-work`. The course's single `/do-work` step is now split across `/implement`, `/tdd` and `/code-review`. If you are asking which one to run against a ticket, the answer is almost always `/implement`.
+不。`/tdd` 记录方法论；`/implement` 是一个非常简单的 work → feedback → commit 循环，是 `/do-work` 的直接替代。课程的单个 `/do-work` 步骤现在被拆分到 `/implement`、`/tdd` 和 `/code-review`。如果你问该对一个 ticket 运行哪个，答案几乎总是 `/implement`。
 
-**Where did the deep-modules and interface-design guidance go?**
+**深度模块和接口设计指导去哪了？**
 
-Into [codebase-design](https://aihero.dev/skills-codebase-design) in v1.0, generalised so several skills share one vocabulary. `refactoring.md` left at the same time; refactoring is now [code-review](https://aihero.dev/skills-code-review)'s job, and that skill carries the Fowler smell baseline.
+进了 v1.0 的 [codebase-design](https://aihero.dev/skills-codebase-design)，被泛化以便多个 skill 共享一套词汇。`refactoring.md` 同时离开；重构现在是 [code-review](https://aihero.dev/skills-code-review) 的工作，那个 skill 携带 Fowler smell 基线。
 
-**Does it know about my other tickets?**
+**它知道我的其他 ticket 吗？**
 
-No. Run against one ticket, it will happily propose work that belongs to a sibling ticket, because it has no view of the rest of the issue graph ([issue #129](https://github.com/mattpocock/skills/issues/129)). Matt's position is that this is not `tdd`'s job. Passing the spec alongside the ticket helps; right-sizing the tickets in the first place helps more.
+不。对一个 ticket 运行，它会乐意提议属于另一个 ticket 的工作，因为它看不到其余的 issue 图（[issue #129](https://github.com/mattpocock/skills/issues/129)）。Matt 的立场是这不是 `tdd` 的工作。随 ticket 传递 spec 有帮助；一开始就合理划分 ticket 帮助更大。
 
-## It's working if
+## 达标表现
 
-- It stops and names the seams it intends to test at, and waits, before any test file exists.
-- One test appears, goes red, gets just enough code to pass, and only then does the next test appear, not a batch of tests followed by a batch of code.
-- Test names read as capabilities ("user can checkout with valid cart"), not as internals ("checkout calls paymentService.process").
-- Expected values in assertions are literals you can trace to the spec, not values recomputed the way the code computes them.
-- Renaming an internal function breaks nothing in the suite.
-- Mocks appear only at external boundaries (the payment API, the clock) and never around your own modules.
+- 它在任何测试文件存在之前就停下来，列出打算测试的接缝，并等待。
+- 一个测试出现，变 red，得到刚好通过的代码，然后下一个测试才出现，不是一批测试加一批代码。
+- 测试名称读起来像能力（"用户可以用合法购物车结账"），而不是内部实现（"checkout 调用 paymentService.process"）。
+- 断言中的期望值是可追溯到规格说明的字面值，而不是用代码相同方式重新计算的值。
+- 重命名一个内部函数不会破坏测试套件中的任何东西。
+- mock 只出现在外部边界（支付 API、时钟），从不围绕你自己的模块。
 
-## Where it fits
+## 它的位置
 
-`tdd` is the engine inside the build step of the main chain, rather than a step of its own:
+`tdd` 是主链路构建步骤内部的引擎，而不是一个单独的步骤：
 
 ```txt
 grill-with-docs → to-spec → to-tickets → implement → code-review
 ```
 
-[to-spec](https://aihero.dev/skills-to-spec) agrees the test seams up front, [implement](https://aihero.dev/skills-implement) drives `tdd` per ticket, and [code-review](https://aihero.dev/skills-code-review) checks afterwards that only the agreed seams were used, and owns the refactoring `tdd` no longer does. Its other neighbour is [codebase-design](https://aihero.dev/skills-codebase-design), the shared source of the seam and deep-module vocabulary `tdd` speaks. You can also reach for it on its own, whenever there is a concrete behaviour to build and no full spec in play. When you are unsure which skill fits your situation, [ask-matt](https://aihero.dev/skills-ask-matt) routes you.
+[to-spec](https://aihero.dev/skills-to-spec) 预先商定测试接缝，[implement](https://aihero.dev/skills-implement) 按 ticket 驱动 `tdd`，[code-review](https://aihero.dev/skills-code-review) 在之后检查只使用了商定的接缝，并接管 `tdd` 不再做的重构。它的另一个邻居是 [codebase-design](https://aihero.dev/skills-codebase-design)，`tdd` 所说的接缝和深度模块词汇的共享来源。你也可以单独使用它，只要有具体的行为要构建且没有完整 spec。当你不确定哪个 skill 适合你的场景时，[ask-matt](https://aihero.dev/skills-ask-matt) 帮你路由。

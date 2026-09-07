@@ -1,51 +1,51 @@
-## What it does
+## 它做什么
 
-`resolving-merge-conflicts` works through an in-progress git merge or rebase, hunk by hunk, then runs the project's own checks and finishes the operation with a commit.
+`resolving-merge-conflicts` 逐步处理正在进行的 git 合并或变基，一个 hunk 一个 hunk 地解决，然后运行项目自身的检查，最后用一个 commit 完成操作。
 
-It refuses to treat a conflict as a text problem. Before touching a hunk it traces each side back to its **[primary source](https://www.aihero.dev/ai-coding-dictionary/primary-source)** (the commit message, the PR, the original issue), so it is choosing between two intents rather than between two blocks of text, and it preserves both wherever they are compatible. Where they genuinely are not, it picks the side matching the merge's stated goal and names the trade-off. It invents no new behaviour to paper over a clash, and `--abort` is not an option it has: the merge is always carried to a finished commit.
+它拒绝将冲突视为文本问题。在处理一个 hunk 之前，它会追溯每一方的一级来源（commit 信息、PR、原始 issue），因此它是在两个意图之间选择，而不是在两段文本之间选择，并且它会在双方意图兼容时保留双方。当意图确实不兼容时，它会选择与合并目标一致的一方，并说明取舍。它不会发明新的行为来掩盖冲突，`--abort` 也不是一个可选项：合并始终会进行到完成的 commit。
 
-## When to reach for it
+## 何时使用
 
-Type `/resolving-merge-conflicts`, or the [agent](https://www.aihero.dev/ai-coding-dictionary/agent) reaches for it automatically when a task fits.
+输入 `/resolving-merge-conflicts`，或者[智能体（agent）](https://www.aihero.dev/ai-coding-dictionary/agent)在任务匹配时自动调用它。
 
-Reach for it when git has already stopped on conflicts it could not resolve itself. It is scoped to the conflict in front of you, not to anything either side of it:
+当 git 已经在无法自行解决的冲突处停止时使用它。它只解决眼前的冲突，不涉及冲突前后的任何内容：
 
-| Your situation | Skill |
+| 你的场景 | 技能 |
 | --- | --- |
-| Mid-merge or mid-rebase, conflict markers in the tree | This one |
-| Merge finished, something now misbehaves for reasons you can't see | [diagnosing-bugs](https://aihero.dev/skills-diagnosing-bugs) |
-| Planning how to slice work so branches collide less | Neither: see the parallel-work question below |
+| 正在合并或变基过程中，工作树中有冲突标记 | 这个技能 |
+| 合并完成，但某些东西表现异常，原因不明 | [diagnosing-bugs](https://aihero.dev/skills-diagnosing-bugs) |
+| 规划如何划分工作以减少分支冲突 | 都不是：见下方的并行工作问题 |
 
-## Primary sources over `ours` and `theirs`
+## 一级来源优先于 `ours` 和 `theirs`
 
-The failure mode this exists to kill is resolving by flag: `--ours`, `--theirs`, or hand-deleting whichever block looks less important, so the markers go away and the build compiles. That resolution can be syntactically perfect and still silently drop a change somebody made on purpose.
+这个技能要消除的失败模式是通过标志来解决冲突：`--ours`、`--theirs`，或者手动删除看起来不太重要的那个块，让标记消失，让构建能够编译通过。这种解决方式可能在语法上完全正确，但仍然会静默地丢弃某人有意做的变更。
 
-You cannot preserve an intent you have not read. So the work starts in the history (commits, PRs, [tickets](https://www.aihero.dev/ai-coding-dictionary/ticket)) and only then moves to the diff. Another step in the loop exists for the same reason: the skill finds the repo's own [automated checks](https://www.aihero.dev/ai-coding-dictionary/automated-check) and runs them before committing, because a merge is the easiest place in git to produce code that satisfies both branches and passes neither's tests.
+你无法保留一个你没有读过的意图。因此工作从历史记录（commit、PR、[ticket](https://www.aihero.dev/ai-coding-dictionary/ticket)）开始，然后才移到 diff。循环中还有一个步骤也是出于同样的原因：这个技能会找到仓库自身的[自动化检查](https://www.aihero.dev/ai-coding-dictionary/automated-check)并在提交前运行它们，因为合并是 git 中最容易产生满足双方分支但都不通过其测试的代码的地方。
 
-## Common questions
+## 常见问题
 
-**Claude Code already resolves conflicts pretty well on its own. Why does this need a skill?**
+**Claude Code 已经能很好地自行解决冲突了，为什么还需要一个技能？**
 
-The added value is the "find the primary sources" and "run feedback loops" steps, which otherwise have to be prompted by hand every time. An unprompted agent will usually produce a plausible resolution from the diff alone and stop there. The skill's value is the two steps it will not let the agent skip: reading why each side exists, and running the checks afterwards. That is a thin margin over a good [model](https://www.aihero.dev/ai-coding-dictionary/model), and it is meant to be: at least one reader has predicted this is a whole skill that becomes a no-op as models improve.
+增加的价值在于"查找一级来源"和"运行反馈循环"这两个步骤，否则每次都需要手动提示。一个没有提示的智能体通常只会从 diff 中产生一个看似合理的解决方案然后停下来。这个技能的价值在于它不允许智能体跳过的两个步骤：阅读每一方存在的原因，以及运行检查。相对于一个好的[模型（model）](https://www.aihero.dev/ai-coding-dictionary/model)，这只是一个微小的提升，但它本来就应该是这样的：至少有一位读者已经预测到，随着模型的改进，这个完整的技能最终会变成一个空操作。
 
-**Should I keep parallel agents off the same files to avoid conflicts in the first place?**
+**我应该让并行智能体不要处理同一文件，以避免冲突吗？**
 
-Mostly no. Zoning files off between parallel tasks costs more than it saves, because agents are good enough at merge conflicts that the tradeoff is not as harsh as it looks. The one piece of discipline worth keeping is to do large refactors first. A large rename landing after ten branches have forked off it is the case that stays expensive.
+通常不需要。在并行任务之间划分文件的成本大于收益，因为智能体在处理合并冲突方面已经足够好，所以这种权衡没有看起来那么严重。唯一值得保持的纪律是先做大型重构。一个大型重命名在十个分支分叉之后才发生，这种情况仍然代价高昂。
 
-One caveat from a user report on parallel worktrees: when sibling [sessions](https://www.aihero.dev/ai-coding-dictionary/session) each build a ticket in their own tree, the merge back is best done by the session that wrote the change, because it is the one that already knows the intent. Batching everybody's conflicts onto one agent at the end throws away exactly the [context](https://www.aihero.dev/ai-coding-dictionary/context) step 2 of this skill has to go and reconstruct.
+一个来自并行 worktree 用户报告的警告：当兄弟[会话（session）](https://www.aihero.dev/ai-coding-dictionary/session)各自在自己的 worktree 中构建一个 ticket 时，合并回去最好由编写变更的会话来做，因为它已经知道意图。最后把所有人的冲突集中到一个智能体上，恰恰丢弃了这个技能第 2 步必须去重建的[上下文（context）](https://www.aihero.dev/ai-coding-dictionary/context)。
 
-**Why never `--abort`?**
+**为什么永远不要 `--abort`？**
 
-Aborting throws away the resolution work and returns you to the same conflict, unchanged, the next time you try. The skill is written for the case where the merge is going to happen. If you have decided it should not happen, that is a decision to make before invoking, not a branch inside the loop.
+中止会丢弃解决工作，让你回到相同的冲突，状态不变，下次再试时还是如此。这个技能是为合并将会发生的情况编写的。如果你决定合并不应该发生，那是在调用之前做出的决定，而不是在循环内部的分支。
 
-## It's working if
+## 达标表现
 
-- The agent quotes commit messages, PRs or issues at you while resolving, not just diff hunks.
-- Every hunk ends up with both sides' behaviour, or with an explicit note naming what was dropped and why.
-- Nothing appears in the result that was on neither branch.
-- Typecheck, tests and format were located and run green *before* the commit, not after you noticed something broken.
-- You end on a clean tree with the operation completed, including every remaining commit in a multi-commit rebase.
+- 智能体在解决冲突时引用 commit 信息、PR 或 issue，而不仅仅是 diff hunk。
+- 每个 hunk 最终都保留了双方的行为，或者有明确的说明指出丢弃了什么以及为什么。
+- 结果中没有出现在任何一方分支上都没有的内容。
+- 类型检查、测试和格式化在提交*之前*被找到并运行通过，而不是在你发现某些东西被破坏之后。
+- 最终得到一棵干净的工作树，操作完成，包括多 commit 变基中的每个剩余 commit。
 
-## Where it fits
+## 它的位置
 
-A reach-for-it-anytime standalone with no dependencies on any other skill: it starts when git stalls and ends when the tree is clean and committed. Its only real neighbour is [diagnosing-bugs](https://aihero.dev/skills-diagnosing-bugs), which takes over at the point where a merge resolved cleanly but the merged code misbehaves: a diagnosis problem, not a conflict one. It sits off the main idea-to-ship flow entirely, so [ask-matt](https://aihero.dev/skills-ask-matt) is the map for what runs before and after it.
+一个随时可用的独立流程，不依赖任何其他技能：它从 git 卡住时开始，到工作树干净且已提交时结束。它唯一真正的邻居是 [diagnosing-bugs](https://aihero.dev/skills-diagnosing-bugs)，它在合并顺利解决但合并后的代码表现异常时接管：这是一个诊断问题，而不是冲突问题。它完全位于主流程（从想法到上线）之外，所以 [ask-matt](https://aihero.dev/skills-ask-matt) 是查看它之前和之后运行什么的地图。
