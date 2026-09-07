@@ -1,35 +1,35 @@
 ---
 name: implement-spec
-description: "Implement a specification in code."
+description: "在代码中实现一份 spec。"
 disable-model-invocation: true
 ---
 
-You have been provided a spec. This spec should have tickets associated with it, describing how to implement the spec.
+你拿到了一份 spec，这份 spec 附带了描述如何实现它的 ticket。
 
-The goal is a PR which implements the entire spec on a single branch.
+目标是在单个分支上用一个 PR 实现整个 spec。
 
-The tickets are not a list of steps. They are a **task graph** with blocking relationships between them. This means there is always a **frontier** of tickets which are ready to be grabbed.
+这些 ticket 不是步骤清单，而是一张带阻塞关系的**任务图（task graph）**，这意味着始终存在一批可领取的**前线（frontier）** ticket。
 
-Communication to and from subagents should be sparse. Communicate primarily through **context pointers**: to the spec, tickets, research notes, and previous commits. Don't duplicate information already available via pointers.
+与子智能体之间的通信应尽量精简，主要通过**上下文指针（context pointers）**沟通：指向 spec、ticket、调研笔记和之前的 commit，不要重复指针已能取到的信息。
 
-**Implementer subagents** should be run in the background where possible for **maximum concurrency**.
+**实现者子智能体（implementer subagent）**应尽量在后台运行，以获得**最大并发度**。
 
-## Steps
+## 步骤
 
-1. Read the spec and tickets. Read enough to understand the task graph.
+1. 阅读 spec 和 ticket，读到能理解任务图为止。
 
-2. (optional) Use an **exploration subagent** to conduct any exploration required by the tickets - relevant codebase files or external documentation. Ensure the exploration subagent can save files - it should save its markdown notes in a directory outside the repo, accessible by all future subagents. This lets **implementer subagents** focus on implementation rather than exploration.
+2. （可选）用一个**探索子智能体（exploration subagent）**完成 ticket 要求的探索，包括相关代码库文件或外部文档。确保探索子智能体能存文件，它的 markdown 笔记应保存在仓库之外的目录，让所有后续子智能体都能取到，这样**实现者子智能体**就能专注于实现而非探索。
 
-3. Create a branch, and a draft PR. The PR should be marked as 'closing' the spec issue and tickets.
+3. 创建分支和草稿 PR，PR 应标记为关闭（closing）该 spec issue 和相关 ticket。
 
-4. Use **implementer subagents** to implement each ticket. Each implementer subagent should work in its own worktree, on its own branch.
+4. 用**实现者子智能体**实现每个 ticket，每个实现者子智能体在自己的 worktree 和自己的分支上工作。
 
-5. Once an **implementer subagent** completes, merge its work to the PR branch with a **merger subagent**.
+5. 一个**实现者子智能体**完成后，用一个**合并子智能体（merger subagent）**把它的工作合入 PR 分支。
 
-6. If this changes the **frontier** of available tickets, kick off more **implementer subagents** to work on the new tickets. This allows for maximum concurrency.
+6. 如果这改变了可用 ticket 的**前线（frontier）**，就为新增 ticket 启动更多**实现者子智能体**，以保持最大并发度。
 
-7. Once all tickets are complete, run /code-review on the PR branch. Fix all issues raised by the code review in a single **implementer subagent**.
+7. 所有 ticket 完成后，在 PR 分支上运行 /code-review，把代码审查提出的问题放在单个**实现者子智能体**中全部修完。
 
-8. Mark the PR as ready for review.
+8. 把 PR 标记为可评审。
 
-9. Clean up all **implementer subagent** worktrees.
+9. 清理所有**实现者子智能体**的 worktree。
