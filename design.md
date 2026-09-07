@@ -55,6 +55,15 @@
 6. 人工审读：控制者逐 diff 审核规格合规性与翻译质量（准确性、流畅度、无机翻腔），发现 Critical/Important 问题进入修复循环。
 7. 最终验收：整分支宽范围复审通过，`claude plugin validate . --strict` 通过（动过 manifest 时）。
 
+## 校验门禁
+
+1. 硬校验 `scripts/check-translation.mjs`（入口 `npm run check:translation`）：围栏配平、`SKILL.md` 的 `frontmatter` 完整性、`name` 纯 `ASCII`、说明页四节标题、安装块以 `.agents/install-block.md` 为正源、正文区禁令。输出精确到文件加行号。
+2. 软扫描 `scripts/audit-english.mjs`（入口 `npm run audit:english`）：脏词命中即失败，英文残留只打印供人工复核。输出附行号。
+3. 检查范围只覆盖自有内容：跳过上游英文 `CHANGELOG.md`、内部工作文档 `docs/superpowers/`、未汉化 `docs/productivity/`（第二批落盘后重新纳入，见脚本内注释）。
+4. 正文区禁令只归硬校验管，软扫描不重复。
+5. 翻译任务合入前三条门禁全绿；`REVIEW` 行允许存在，但需人工扫一遍确认无错字后放行。
+6. 语义分类与失败关闭兜底见 `TRANSLATION-GLOSSARY.md` 对应两节，本节不重复。
+
 ## 同步上游流程
 
 1. 本 fork 已有 `origin`（自己的仓库），上游用 `upstream` 指向 `https://github.com/mattpocock/skills.git`（如未添加，先加一次）。
