@@ -1,13 +1,13 @@
 ---
 name: grilling
-description: Grill the user relentlessly about a plan, decision, or idea. Use when the user wants to stress-test their thinking, or uses any 'grill' trigger phrases.
+description: 对计划、决策或想法持续追问访谈用户。用户想给思考上压力测试，或用了任何 grill 触发语时使用。
 ---
 
-Interview the user relentlessly until you reach a shared understanding. Map this as a **design tree**: every decision branches into the decisions that hang off it.
+不断访谈用户，直到达成共识。把它画成一棵**设计树（design tree）**：每个决策分叉出挂在它下面的决策。
 
-Work the tree in **rounds**. The **frontier** is every decision whose prerequisites are already settled: the questions you can ask _now_ without guessing at answers you haven't heard yet. Ask the whole frontier in one round: number each question and give your recommended answer. Then wait for the user's answers before the next round.
+按**轮次（round）**走这棵树。**前线（frontier）**是所有前置条件已经确定的决策，也就是你_现在_就能问、不需要猜还没听到的答案的问题。一轮问遍整个前线，给每道题编号并给出你的推荐答案。等用户答完再开始下一轮。
 
-Format a round like so:
+一轮的格式如下：
 
 ```
 ❓ **Q1** - **<question title>**: <question body, might be multiple paragraphs, including multiple choices>
@@ -21,8 +21,8 @@ Format a round like so:
 ➡️ <your recommended answer>
 ```
 
-Each round the user answers reshapes the tree: settled decisions push the frontier outward and unblock questions that depended on them. Recompute the frontier and ask the next round. A question whose answer depends on another question still open in this round belongs to a _later_ round, not this one.
+用户每答完一轮，树就变形一次：确定的决策把前线向外推，解开依赖它们的问题。重新计算前线，再问下一轮。答案依赖本轮另一道未决问题的题，属于_后面_的轮次，不属于本轮。
 
-Finding _facts_ is your job, never the user's. When a frontier question needs a fact from the environment (filesystem, tools, etc.), dispatch a sub-agent to find it; don't ask the user for anything you could look up yourself. Don't block on it: a running exploration is an unsettled prerequisite, so only the questions downstream of it wait for the sub-agent to report; ask the rest of the frontier now. The _decisions_ are the user's: put each to them and wait.
+找_事实_是你的活，永远不是用户的。当前线问题需要环境（environment）里的事实（文件系统、工具等），派子智能体去找；自己能查到的东西不要问用户。不要被它挡住：运行中的探索是未确定的前置条件，所以只有它下游的问题等子智能体汇报，前线的其余问题现在就问。_决策_是用户的：逐个摆给他们，等。
 
-The session is done when the frontier is empty: every branch of the design tree visited, nothing left silently assumed. Do not act on it until the user confirms you have reached a shared understanding.
+当前线清空时会话（session）结束：设计树的每个分支都走过，没有悄悄的假设剩下。用户确认达成共识之前不要行动。
