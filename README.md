@@ -93,7 +93,7 @@ npx skills@latest add mattpocock/skills
 
 **问题**。软件开发中最常见的失败模式是双方没对齐。你以为开发者懂你要什么，等看到做出来的东西，才发现对方完全没理解。
 
-在 AI 时代也一样。你和 agent 之间存在沟通鸿沟。解法就是一轮 **grilling session**：让 agent 围绕你要构建的东西，把你问个底朝天。
+在 AI 时代也一样。你和 agent 之间存在沟通鸿沟。解法就是一轮**访谈会话**：让 agent 围绕你要构建的东西，把你问个底朝天。
 
 **解法**是使用：
 
@@ -194,7 +194,7 @@ npx skills@latest add mattpocock/skills
 - **[ask-matt](./skills/engineering/ask-matt/SKILL.md)**：问当前情况适合哪个 skill 或流程（flow）。本仓库 user-invoked skill 的路由器。
 - **[grill-with-docs](./skills/engineering/grill-with-docs/SKILL.md)**：一场 grilling，顺手构建项目的 domain model，打磨术语，并随手更新 `CONTEXT.md` 和 ADR。
 - **[triage](./skills/engineering/triage/SKILL.md)**：让 issue 穿过一组 triage 角色组成的状态机（state machine）流转。
-- **[improve-codebase-architecture](./skills/engineering/improve-codebase-architecture/SKILL.md)**：扫描代码库找 deepening opportunity，以可视化 HTML report 呈现，再对你选中的那一项访谈到底。
+- **[improve-codebase-architecture](./skills/engineering/improve-codebase-architecture/SKILL.md)**：扫描代码库找 deepening opportunity，以可视化 report 呈现，再对你选中的那一项访谈到底。
 - **[setup-matt-pocock-skills](./skills/engineering/setup-matt-pocock-skills/SKILL.md)**：为 engineering skill 配置本 repo（issue tracker、triage label、领域文档（domain docs）布局）。用其他 engineering skill 之前，每个 repo 跑一次。
 - **[to-spec](./skills/engineering/to-spec/SKILL.md)**：把当前对话转成 spec 并发布到 issue tracker。不访谈，只合成你们已经聊过的内容。
 - **[to-tickets](./skills/engineering/to-tickets/SKILL.md)**：把任何计划、spec 或对话拆成一组 tracer bullet 工单，每个工单声明自己的阻塞边界（blocking edges），写成本地文件的文本，或真实 tracker 上的原生 blocking link。
@@ -220,7 +220,7 @@ npx skills@latest add mattpocock/skills
 **User-invoked**
 
 - **[grill-me](./skills/productivity/grill-me/SKILL.md)**：被穷追不舍地访谈一个计划或设计，直到设计树的每个分支都落定。
-- **[handoff](./skills/productivity/handoff/SKILL.md)**：把当前对话压缩成一份 handoff 文档，让另一个 agent 能接手继续。
+- **[handoff](./skills/productivity/handoff/SKILL.md)**：把当前对话压成一份 handoff 文档，让另一个 agent 能接手继续。
 - **[teach](./skills/productivity/teach/SKILL.md)**：用当前目录做有状态的（stateful）教学工作区，分多次会话教用户一项新 skill 或新概念。
 - **[to-questionnaire](./skills/productivity/to-questionnaire/SKILL.md)**：把独自回答不了的决策变成一份 Markdown 问卷，发给唯一能回答的人，对方异步填或会上一起过。它追问的是这次发送（send）本身（发给谁、要回什么），而不是决策主题。
 - **[wait-what](./skills/productivity/wait-what/SKILL.md)**：某句话你没听进去，立刻触发它。agent 会补上你缺的上下文（context），用大白话、你的 `CONTEXT.md` 词汇重新讲一遍。
