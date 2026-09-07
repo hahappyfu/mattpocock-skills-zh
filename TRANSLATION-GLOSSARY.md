@@ -164,6 +164,39 @@ blocking link、critical path、judgement call
 | child ticket | 子工单 | setup 语境 |
 | blocking | 阻塞 | setup 语境 |
 | merge request | MR | GitLab 语境 |
+| beat | 节拍 | 写作语境 |
+| fragment | 片段 | 写作语境 |
+| grounding | 落定 | 写作语境 |
+| grounded | 已落定 | 写作语境 |
+| concept | 概念 | 写作语境 |
+| term | 术语 | 命名概念 |
+| explore | 探索 | 写作语境 |
+| exploit | 深耕 | 写作语境 |
+| pile | 素材堆 | 写作语境 |
+| quarry | 采石场 | 写作语境 |
+| leading word | 领衔词 | 写作语境 |
+| entry point | 入口文件 | setup 语境 |
+| barrel | 桶文件 | 文件 |
+| layering | 分层 | setup 语境 |
+| task graph | 任务图 | setup 语境 |
+| context pointer | 上下文指针 | setup 语境 |
+| implementer subagent | 实现者子智能体 | setup 语境 |
+| exploration subagent | 探索子智能体 | setup 语境 |
+| merger subagent | 合并子智能体 | setup 语境 |
+| loop lens | 循环透镜 | loop-me 语境 |
+| loop | 循环 | 生活模式 |
+| retrospective | 复盘 | retro 语境 |
+| environment | 环境 | agent 语境 |
+| navigation pointer | 导航指针 | retro 语境 |
+| reviewer agent | 评审 agent | retro 语境 |
+| No-op | 空操作 | 指令 |
+| Checkpoint | 检查点 | loop-me 语境 |
+| Trigger | 触发器 | loop-me 语境 |
+| event | 事件 | loop-me 语境 |
+| schedule | 排期 | loop-me 语境 |
+| delegating | 委派 | loop-me 语境 |
+| steering | 转向 | retro 语境 |
+| checklist | 检查清单 | loop-me 语境 |
 
 ## 使用规则
 
