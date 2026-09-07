@@ -2,7 +2,7 @@
 
 `wait-what` 是你没听懂时输入的东西。[智能体（agent）](https://www.aihero.dev/ai-coding-dictionary/agent)把刚说的重讲一遍，补上你缺的语境，用大白话写，用项目 `CONTEXT.md` 的词汇。
 
-skill 全文三行。这是设计，不是没写完。跟啰嗦死磕的 skill 败在膨胀：四百行的简洁 skill 照样挡不住[模型（model）](https://www.aihero.dev/ai-coding-dictionary/model)啰嗦，因为模型读的是体量，不是恳求。这个只带一枚精确引导词，别的没有。
+skill 全文三行。这是设计，不是没写完。跟啰嗦死磕的 skill 败在膨胀：四百行的简洁 skill 照样挡不住[模型（model）](https://www.aihero.dev/ai-coding-dictionary/model)啰嗦，因为模型读的是体量，不是恳求。这个只带一枚精确领衔词，别的没有。
 
 ## 何时使用
 
@@ -12,7 +12,7 @@ skill 全文三行。这是设计，不是没写完。跟啰嗦死磕的 skill �
 
 ## 名字就是机制
 
-引导词是 **wait**。"Be concise" 是对智能体输出的指令，模型听完砍字，丢你丢得更远。**Wait** 讲的是*你*的状态。这话是说理解在这里断了。听见"be brief"的智能体写电报，听见"等等，你把我说丢了"的智能体退回去讲。
+领衔词是 **wait**。"Be concise" 是对智能体输出的指令，模型听完砍字，丢你丢得更远。**Wait** 讲的是*你*的状态。这话是说理解在这里断了。听见"be brief"的智能体写电报，听见"等等，你把我说丢了"的智能体退回去讲。
 
 这就是 skill 全部。治啰嗦的流行招数全点*输出*的名：`/tldr`、`/no-fluff`、`/talk-normal`。模型矫枉过正，掉进洞穴人语域，又短又没更清楚。点*听众*的名两半都要：字少些，缺的语境也补上。
 
@@ -20,7 +20,7 @@ skill 说重讲 **that**，不说"上一条消息"。丢你的东西通常比一
 
 ## 它接进你已有的语言
 
-正文复用你的全局 `CLAUDE.md` 和项目 `CONTEXT.md` 里已有的引导词。ASD-STE100 简化技术英语定语域。通用语言给名词。skill、`CLAUDE.md`、`CONTEXT.md` 摸的是同一批[词元（token）](https://www.aihero.dev/ai-coding-dictionary/token)，调用它不是新指令，是提醒智能体一条答应过的。
+正文复用你的全局 `CLAUDE.md` 和项目 `CONTEXT.md` 里已有的领衔词。ASD-STE100 简化技术英语定语域。通用语言给名词。skill、`CLAUDE.md`、`CONTEXT.md` 摸的是同一批[词元（token）](https://www.aihero.dev/ai-coding-dictionary/token)，调用它不是新指令，是提醒智能体一条答应过的。
 
 没 `CONTEXT.md`（也没有 `CONTEXT-MAP.md` 指到当下语境的那份）照样能用，丢的只是领域词汇那半。
 
