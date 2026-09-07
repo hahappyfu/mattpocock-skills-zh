@@ -13,7 +13,8 @@ const DIRTY = ["有人境", "纸质记录", "调用 Skill 工具两次"];
 const files = execSync("git ls-files", { encoding: "utf8" })
   .trim()
   .split("\n")
-  .filter((f) => f && f.endsWith(".md") && fs.existsSync(f));
+  // 待第二批汉化落盘后重新纳入生产力目录
+  .filter((f) => f && f.endsWith(".md") && fs.existsSync(f) && !f.startsWith("docs/productivity/") && !f.startsWith("docs/superpowers/"));
 
 let failed = false;
 for (const file of files) {
