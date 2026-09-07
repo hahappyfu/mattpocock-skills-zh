@@ -1,48 +1,48 @@
 ---
 name: writing-shape
-description: "Writing, exploit: shape raw material into an article, paragraph by paragraph."
+description: "写作深耕：把素材堆一段一段塑造成文章。"
 disable-model-invocation: true
 ---
 
 <what-to-do>
 
-The user has passed (or will pass) a markdown file of raw material. Treat it as the input pile: anything from a tidy list of fragments to a wall of unstructured prose to a transcript. The format does not matter. Read it end-to-end before doing anything else.
+用户已经（或即将）传入一个写满素材的 markdown 文件，把它当输入堆：整齐的片段清单也好，一大坨无结构散文也好，访谈记录也好，格式不重要，先从头读到尾再干别的。
 
-Then run a shaping session that produces a separate article document. This is **exploit**: the exploring is done, the pile is fixed: commit to a structure and mine the pile to fill it. Do not edit the raw material file: it is read-only to this skill.
+然后跑一段塑形会话，产出一篇独立的文章。这是**深耕（exploit）**：探索已结束，素材堆已固定，认准一个结构挖堆填料。不要动素材文件，对本 skill 它只读。
 
-If the user did not say where to save the article, ask once and remember the path.
+如果用户没说文章存哪，问一次并记住路径。
 
 </what-to-do>
 
 <supporting-info>
 
-## The loop
+## 循环
 
-1. **Read the pile.** Read the input file in full. Form a sense of what's in it.
-2. **Establish the prerequisites.** Settle with the user what the reader knows walking in: the concepts that are **grounded** from the start. Everything else must be grounded by a block before a later block can lean on it. See [Grounding](#grounding).
-3. **Draft 2–3 candidate openings.** Each opening should imply a different thesis or angle for the article. Show all of them. Force the user to pick or compose a hybrid. The chosen opening defines what the rest of the article must do.
-4. **Grow paragraph by paragraph.** After the opening lands, ask "given this opening, what does the reader need to hear next?" Pull material from the pile to answer. The next block may only lean on grounded concepts, and grounds new ones as it lands. Argue about the form the next block takes: a paragraph, a list, a table, a callout, a quote, a code block. Each format choice should be deliberate and defensible.
-5. **Append to the article file as you go.** Don't batch. Write each agreed paragraph or block immediately so the user can see the article taking shape.
-6. **Loop step 4 until the article is done.** The user decides when it's done.
+1. **读堆。**输入文件通读一遍，对里面有什么形成感觉。
+2. **先定前置。**和用户定下来读者进场时知道什么：哪些概念开场即**已落定**，其余一切必须由后面的块先落定，再后面的块才能依赖。见 [落定（Grounding）](#落定grounding)。
+3. **起草 2 到 3 个候选开头。**每个开头暗示文章不同的论点或角度，全摆出来，逼用户选一个或拼一个混合版。选定的开头决定了正文剩下部分必须干什么。
+4. **一段一段长。**开头落地后问 "given this opening, what does the reader need to hear next?" 从堆里挖料回答。下一个块只能依赖已落定的概念，落地时落定新概念。下个块取什么形式要摆到台面上吵：一段、列表、表格、提示框、引用、代码块，每种格式选择都要有站得住脚的理由。
+5. **边定边往文章文件里追加。**不要攒批，每定一段（块）立刻写，让用户看着文章长起来。
+6. **循环第 4 步直到文章写完。**什么时候完用户说了算。
 
-## Grounding
+## 落定（Grounding）
 
-Every **concept** has to be **grounded** before a block can lean on it: the reader either walked in knowing it or met it in an earlier block. A block that reaches for an ungrounded concept loses the reader. The unit is the concept, not the word for it: a block can lean on an idea the reader lacks even with no jargon in sight. Where a concept has a name (a **term**), grounding it means landing the idea and the term together.
+每个**概念（concept）**必须先**落定（grounded）**，块才能依赖它：读者要么进场就知道，要么在之前的块里见过。抓没落定概念的块会丢掉读者。单位是概念，不是叫法：哪怕一个行话没有，块也可能依赖了读者没有的想法。有名字的概念（一个**术语（term）**）落定，意思是想法和叫法一起落地。
 
-A concept gets grounded one of two ways:
+概念落定只有两种方式：
 
-- **Prerequisite**: grounded before the opening. The reader brings it. Fixed at the start.
-- **Introduced**: a block establishes it, and from then on it's grounded for the rest of the article.
+- **前置（Prerequisite）**：开头之前就落定，读者自带，开场即固定。
+- **引入（Introduced）**：某个块负责讲清，之后整篇文章都能用。
 
-Keep a running list of what's grounded. When you ask "what does the reader need to hear next?", an ungrounded concept the next move needs is itself the answer: ground it first (here or in an earlier block) or you can't make the move. This is the gap-naming of [Pulling from the pile](#pulling-from-the-pile) one level up: there the pile is missing material; here the article is missing a foundation.
+维护一张已落定清单。每当问"读者接下来需要听到什么"，下个动作依赖的没落定概念本身就是答案：先落定它（在这里或前面的块），否则这步走不了。这就是上一层 [从堆里挖料](#从堆里挖料)的缺口点名：那里缺的是素材，这里缺的是地基。
 
-The lever is what you make a prerequisite versus what you ground inside the article. Demand too much up front and you shut readers out; ground too much inside and the opening drowns in definitions. Settle it with the user when you establish prerequisites.
+杠杆还是拿什么当前置、拿什么在篇中落定。开场要太多会把读者关在门外，篇中落定太多会让开头淹没在定义里。定前置时和用户谈妥。
 
-## Conversational feel
+## 对话感
 
-This is a grilling session inverted. In ideation, the question was "what are you actually noticing?" Here it's "what is this article actually arguing, and in what order does the reader need to hear it?" Push back. Refuse to let weak transitions slide. If a paragraph doesn't earn its place, cut it.
+这是访谈会的反转，在创意阶段问题是"what are you actually noticing?" 在这里是"what is this article actually arguing, and in what order does the reader need to hear it?" 顶回去，不让弱过渡溜过去，哪段没挣到位置就砍。
 
-Specific moves to keep using:
+惯用招式继续用：
 
 - "What does this paragraph do for the reader that the previous one didn't?"
 - "If I cut this, what breaks?"
@@ -50,30 +50,30 @@ Specific moves to keep using:
 - "This sentence is doing two jobs: split it or pick one."
 - "The opening promised X. We've drifted to Y. Either re-thread it or change the opening."
 
-## Pulling from the pile
+## 从堆里挖料
 
-Treat the raw material as a quarry, not a script. Pull a fragment, rework it to fit the surrounding paragraph, and place it. A fragment may be split across multiple paragraphs, merged with another, or paraphrased. The pile's job is to be mined; the article's job is to read as one voice.
+把素材当采石场，别当剧本。抓一个片段，改到贴合上下文，放进去。一个片段可以拆到多段，可以合并，可以改写，堆的使命是被挖，文章的使命是读成一个声音。
 
-If the pile lacks something the article needs, name the gap explicitly: "We need an example here and the pile doesn't have one. Give me one now or we cut this section."
+堆里缺文章要的东西就明说缺口："We need an example here and the pile doesn't have one. Give me one now or we cut this section."
 
-## Format arguments to actually have
+## 该吵的格式架
 
-When choosing how to render a block, weigh these tradeoffs out loud with the user, not silently:
+选块的渲染形式时，把这些权衡摆到台面上和用户吵，别自己悄悄定：
 
-- **Prose vs. list.** Prose carries argument; lists carry parallel items. If items aren't truly parallel, prose is better. If they are, a list is faster to scan.
-- **Inline vs. callout.** Tips, warnings, and asides go in callouts (`> [!TIP]`, `> [!NOTE]`), but only if they'd genuinely derail the main argument inline. Otherwise leave them inline.
-- **Table vs. repeated structure.** If the same shape repeats 3+ times with the same fields, a table. Otherwise prose with bold leads.
-- **Quote vs. paraphrase.** Quote when the original wording is the point. Paraphrase when only the idea matters.
-- **Code block vs. inline code.** Multi-line, runnable, or illustrative → block. Single token or identifier → inline.
+- **散文还是列表。**散文承载论证，列表承载并列项。项要不是真并列，散文更好，是真并列，列表扫得快。
+- **行内还是提示框。**提示、警告、旁白进提示框（`> [!TIP]`、`> [!NOTE]`），但只在它们真会打断主论证时，否则留行内。
+- **表格还是重复结构。**同一形状带同样字段重复 3 次以上用表格，否则用粗体开头的散文。
+- **引用还是改写。**原话本身就是重点时引用，只要意思重要时改写。
+- **代码块还是行内代码。**多行、可运行、示意用块，单个记号或标识符用行内。
 
-## Writing rhythm
+## 写作节奏
 
-Append to the article file as each block is agreed. Re-read the file from disk before every write: the user may have edited between turns. Never overwrite blindly. If the user wants a paragraph rewritten, edit that specific paragraph in place; leave the rest alone.
+每定一个块就往文章文件追加。每次落盘前都从磁盘重读文件：用户可能在回合之间编辑过，绝不盲覆盖。用户想重写某段就原地改那一段，其余不动。
 
-## Out of scope
+## 越界
 
-- Mining for new fragments that aren't in the pile (handle gaps as in "Pulling from the pile").
-- Editing the raw material file.
-- Publishing, formatting for a specific platform, or adding frontmatter the user didn't ask for.
+- 挖堆里没有的新片段（缺口按"从堆里挖料"处理）。
+- 改素材文件。
+- 发布、按特定平台排版，或加用户没要的 frontmatter。
 
 </supporting-info>
