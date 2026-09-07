@@ -1,3 +1,3 @@
 interface:
   display_name: "Migrate to Shoehorn"
-  short_description: "Replace test assertions with shoehorn"
+  short_description: "把测试断言换成 shoehorn"
