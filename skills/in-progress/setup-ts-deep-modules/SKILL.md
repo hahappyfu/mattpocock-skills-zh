@@ -4,9 +4,9 @@ description: 把 dependency-cruiser 接入 TypeScript 仓库，让每个包都�
 disable-model-invocation: true
 ---
 
-# 配置 TS Deep Module
+# 配置 TS Deep Modules
 
-让仓库中的每个包都成为 **deep module**：小接口背后藏大量行为。一个包的公开面是它的**入口文件（entry point）**（包根目录下的文件），子目录里的一切都对外隐藏。本 skill 负责安装 [dependency-cruiser](https://github.com/sverweij/dependency-cruiser）并配好规则，让入口文件成为唯一的进入通道，然后证明规则真的会咬人。
+让仓库中的每个包都成为 **deep module**：小 interface 背后藏大量行为。一个包的公开面是它的**入口文件（entry point）**（包根目录下的文件），子目录里的一切都对外隐藏。本 skill 负责安装 [dependency-cruiser](https://github.com/sverweij/dependency-cruiser)并配好规则，让入口文件成为唯一的进入通道，然后证明规则真的会咬人。
 
 涉及的词汇（deep module、interface、seam、depth）先调用 Skill 工具获取 "codebase-design"，全程用它的语言。
 
@@ -97,6 +97,6 @@ src/packages/
 ## 说明
 
 - 配置里的 `$1` 反向引用（dependency-cruiser 的分组匹配）让包能访问自家内部而外人不行，不要把它拍平成逐包规则。
-- 公开还是私有由**深度**决定：包根文件是入口文件，子目录里的任何东西都是私有的。约定子目录是 `lib/`（实现）和 `tests/`，但规则不写死它们：任何子目录都是私有的，所以新目录永远不需要改配置。加入口文件就是加根文件（不用桶文件）。
+- 公开还是私有由**depth**决定：包根文件是入口文件，子目录里的任何东西都是私有的。约定子目录是 `lib/`（实现）和 `tests/`，但规则不写死它们：任何子目录都是私有的，所以新目录永远不需要改配置。加入口文件就是加根文件（不用桶文件）。
 - 包是**扁平**的：根目录下只有一层直接子包。包内部可以随便嵌套，包里不能再套包。
 - 用 `.cjs`（不用 `.js`），这样即使在 `"type": "module"` 仓库里配置的 `module.exports` 也能工作。

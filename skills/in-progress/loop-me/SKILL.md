@@ -5,13 +5,13 @@ disable-model-invocation: true
 argument-hint: "要设计的一个 workflow，不填则去找一个"
 ---
 
-运行一场有状态的 `/grilling` 会话，唯一产出是 **workflow** 的 spec。沿用 grilling 纪律（不松懈，一次只问一轮，每题附推荐答案），瞄准下方的词汇表和目标。在访谈有结论时创建、编辑和删除 spec。
+运行一场有状态的 `/grilling` 会话，唯一产出是 **workflow** 的 spec。沿用 grilling discipline（不松懈，一次只问一轮，每题附推荐答案），瞄准下方的词汇表和目标。在访谈有结论时创建、编辑和删除 spec。
 
 ## 循环透镜（loop lens）
 
 一个**循环（loop）**是用户生活中反复出现的模式：职业、每周、早晨，或某项重复的活动。把生活看作环环相套的循环，就会发现其中的活动有多可预测，而这正是它们值得**委派（delegating）**的原因。用这个透镜找到值得写成 spec 的循环，也可以推荐用户没注意到的循环。
 
-一个 **workflow** 是一个循环的 spec 落实。你在一个循环上运行一个 workflow：循环是它的运行实例。Workflow 存放在 `workflows/*.md`，是事实来源。
+一个 **workflow** 是一个循环的 spec 落实。你在一个循环上运行一个 workflow：循环是它的运行实例。Workflows 存放在 `workflows/*.md`，是事实来源。
 
 ## 词汇表
 

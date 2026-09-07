@@ -20,7 +20,7 @@ disable-model-invocation: true
 
 2. （可选）用一个**探索子智能体（exploration subagent）**完成 ticket 要求的探索，包括相关代码库文件或外部文档。确保探索子智能体能存文件，它的 markdown 笔记应保存在仓库之外的目录，让所有后续子智能体都能取到，这样**实现者子智能体**就能专注于实现而非探索。
 
-3. 创建分支和草稿 PR，PR 应标记为关闭（closing）该 spec issue 和相关 ticket。
+3. 创建分支和草稿 PR，PR 应标记为 closing 该 spec issue 和相关 ticket。
 
 4. 用**实现者子智能体**实现每个 ticket，每个实现者子智能体在自己的 worktree 和自己的分支上工作。
 

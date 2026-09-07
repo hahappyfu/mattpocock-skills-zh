@@ -40,7 +40,7 @@ disable-model-invocation: true
 
 ## 对话感
 
-这是访谈会的反转，在创意阶段问题是"what are you actually noticing?" 在这里是"what is this article actually arguing, and in what order does the reader need to hear it?" 顶回去，不让弱过渡溜过去，哪段没挣到位置就砍。
+这是 grilling 会话的反转，在创意阶段问题是"what are you actually noticing?" 在这里是"what is this article actually arguing, and in what order does the reader need to hear it?" 顶回去，不让弱过渡溜过去，哪段没挣到位置就砍。
 
 惯用招式继续用：
 
@@ -70,7 +70,7 @@ disable-model-invocation: true
 
 每定一个块就往文章文件追加。每次落盘前都从磁盘重读文件：用户可能在回合之间编辑过，绝不盲覆盖。用户想重写某段就原地改那一段，其余不动。
 
-## 越界
+## 越界（scope）
 
 - 挖堆里没有的新片段（缺口按"从堆里挖料"处理）。
 - 改素材文件。
