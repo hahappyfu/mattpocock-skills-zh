@@ -1,36 +1,36 @@
-## What it does
+## 它做什么
 
-`wait-what` is what you type when a message didn't land. The [agent](https://www.aihero.dev/ai-coding-dictionary/agent) then re-pitches what it just said. It adds the context you were missing, writes in plain English, and uses the vocabulary from your project's `CONTEXT.md`.
+`wait-what` 是你没听懂时输入的东西。[智能体（agent）](https://www.aihero.dev/ai-coding-dictionary/agent)把刚说的重讲一遍，补上你缺的语境，用大白话写，用项目 `CONTEXT.md` 的词汇。
 
-The skill is three lines long. That is the design, not an unfinished draft. Skills that fight verbosity fail by growing: a four-hundred-line concision skill still leaves the [model](https://www.aihero.dev/ai-coding-dictionary/model) verbose, because the model reads the volume, not the plea. This one carries a single precise leading word and nothing else.
+skill 全文三行。这是设计，不是没写完。跟啰嗦死磕的 skill 败在膨胀：四百行的简洁 skill 照样挡不住[模型（model）](https://www.aihero.dev/ai-coding-dictionary/model)啰嗦，因为模型读的是体量，不是恳求。这个只带一枚精确引导词，别的没有。
 
-## When to reach for it
+## 何时使用
 
-You invoke it by typing `/wait-what`. The agent will not reach for it on its own, and it shouldn't. Only you know when you stopped following.
+输入 `/wait-what` 即可调用。智能体不会主动调用，也不该。只有你知道自己什么时候跟丢了。
 
-Use it the second you notice you're skimming. The agent has drifted into jargon it invented, stacked five acronyms, or explained a decision whose premise you never saw. It fixes the conversation you're already in. To stop the jargon arriving at all, use [grill-with-docs](https://aihero.dev/skills-grill-with-docs), which builds the shared language upfront.
+发现自己在扫读那一秒就用。智能体开始讲自创黑话、叠五个缩写、讲个你没见过前提的决策。它修你所在的对话。想让黑话根本不出现，用 [grill-with-docs](https://aihero.dev/skills-grill-with-docs)，它提前建共享语言。
 
-## The name is the mechanism
+## 名字就是机制
 
-The leading word is **wait**. "Be concise" is an instruction about the agent's output, and the model obeys it by clipping words and losing you further. **Wait** is about *your* state. It says comprehension failed here. An agent that hears "be brief" writes telegrams. An agent that hears "wait, you lost me" backs up and explains.
+引导词是 **wait**。"Be concise" 是对智能体输出的指令，模型听完砍字，丢你丢得更远。**Wait** 讲的是*你*的状态。这话是说理解在这里断了。听见"be brief"的智能体写电报，听见"等等，你把我说丢了"的智能体退回去讲。
 
-That difference is the whole skill. Every popular fix for verbosity names the *output*: `/tldr`, `/no-fluff`, `/talk-normal`. The model over-corrects into a caveman register that is shorter and no clearer. Naming the *listener* asks for both halves at once: fewer words **and** the context you were missing.
+这就是 skill 全部。治啰嗦的流行招数全点*输出*的名：`/tldr`、`/no-fluff`、`/talk-normal`。模型矫枉过正，掉进洞穴人语域，又短又没更清楚。点*听众*的名两半都要：字少些，缺的语境也补上。
 
-The skill says re-pitch **that**, not "that last message". What lost you is usually bigger than one paragraph, so the agent decides how far back to go.
+skill 说重讲 **that**，不说"上一条消息"。丢你的东西通常比一段大，退多远智能体定。
 
-## It plugs into the language you already have
+## 它接进你已有的语言
 
-The body reuses the leading words already in your global `CLAUDE.md` and your project's `CONTEXT.md`. ASD-STE100 Simplified Technical English sets the register. The ubiquitous language supplies the nouns. The skill, `CLAUDE.md` and `CONTEXT.md` reach for the same [tokens](https://www.aihero.dev/ai-coding-dictionary/token), so invoking it is not a new instruction. It is a reminder of one the agent already agreed to.
+正文复用你的全局 `CLAUDE.md` 和项目 `CONTEXT.md` 里已有的引导词。ASD-STE100 简化技术英语定语域。通用语言给名词。skill、`CLAUDE.md`、`CONTEXT.md` 摸的是同一批[词元（token）](https://www.aihero.dev/ai-coding-dictionary/token)，调用它不是新指令，是提醒智能体一条答应过的。
 
-If you have no `CONTEXT.md` (and no `CONTEXT-MAP.md` pointing to one for the context at hand), the skill still works. You lose only the domain-vocabulary half.
+没 `CONTEXT.md`（也没有 `CONTEXT-MAP.md` 指到当下语境的那份）照样能用，丢的只是领域词汇那半。
 
-## It's working if
+## 达标表现
 
-- The re-pitch is **shorter and clearer**, not shorter and blunter.
-- It adds the premise you were missing, instead of only deleting words.
-- Project nouns replace invented ones. The terms in your `CONTEXT.md` come back.
-- You can use it twice in a row, and it does not degrade into terseness.
+- 重讲**又短又清楚**，不是又短又愣。
+- 补上你缺的前提，不止删字。
+- 项目名词替掉自创词。`CONTEXT.md` 的词回来。
+- 连用两次不退化成惜字。
 
-## Where it fits
+## 它的位置
 
-You can use `wait-what` at any point, in any conversation, inside any other skill. It repairs one message after the fact. The real cure is a shared language agreed upfront, and that is [grill-with-docs](https://aihero.dev/skills-grill-with-docs): a [grilling](https://www.aihero.dev/ai-coding-dictionary/grilling) session that runs [domain-modeling](https://aihero.dev/skills-domain-modeling) as it goes, so the words you both use land in your `CONTEXT.md`. If you're unsure which skill fits the moment, [ask-matt](https://aihero.dev/skills-ask-matt) routes you.
+`wait-what` 随时随地任何对话任何 skill 里用。它修一条消息的事后。治本是提前约好的共享语言，那是 [grill-with-docs](https://aihero.dev/skills-grill-with-docs)：一场跑 [domain-modeling](https://aihero.dev/skills-domain-modeling) 的 [grilling](https://www.aihero.dev/ai-coding-dictionary/grilling) 会话，你们共用的词落进 `CONTEXT.md`。拿不准当下哪个 skill 合适，[ask-matt](https://aihero.dev/skills-ask-matt) 指路。
