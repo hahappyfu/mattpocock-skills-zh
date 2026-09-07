@@ -7,9 +7,9 @@ const files = execSync("git ls-files", { encoding: "utf8" })
   .filter((file) => file && fs.existsSync(file));
 
 let failed = false;
-function fail(file, msg) {
+function fail(file, msg, line) {
   failed = true;
-  console.error(`FAIL ${file}: ${msg}`);
+  console.error(line ? `FAIL ${file}:${line}: ${msg}` : `FAIL ${file}: ${msg}`);
 }
 function read(file) {
   return fs.readFileSync(file, "utf8");
@@ -27,7 +27,21 @@ for (const file of files) {
   }
   const prose = stripFences(text);
   if (/—|——/.test(prose)) {
-    fail(file, "long dash found outside code fences");
+    let inFence = false;
+    let hitLine = 0;
+    for (const [idx, line] of text.split("\n").entries()) {
+      const segs = line.split("```");
+      let proseLine = "";
+      for (let k = 0; k < segs.length; k++) {
+        if (!inFence && k % 2 === 0) proseLine += segs[k];
+      }
+      if (/—|——/.test(proseLine)) {
+        hitLine = idx + 1;
+        break;
+      }
+      if ((line.match(/```/g) || []).length % 2 !== 0) inFence = !inFence;
+    }
+    fail(file, "long dash found outside code fences", hitLine || undefined);
   }
   if (file.endsWith("SKILL.md")) {
     const fm = text.match(/^---\s*\n([\s\S]*?)\n---/);
