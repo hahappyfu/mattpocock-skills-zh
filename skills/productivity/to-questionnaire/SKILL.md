@@ -1,23 +1,23 @@
 ---
 name: to-questionnaire
-description: Turn a decision you can't fully answer into a questionnaire for someone else to fill in.
+description: 把你独自答不全的决策变成问卷，交给别人填。
 disable-model-invocation: true
 ---
 
-Turn something the user can't answer alone into a **questionnaire**: a Markdown document they hand to one person to fill in async, or fill out together over a meeting. The recipient holds knowledge the user lacks; the questionnaire pulls it out of them.
+把用户独自搞不定的事变成一份**问卷（questionnaire）**：markdown 文档，交到一个人手里异步填，或开会一起填。对方手里有用户缺的知识，问卷负责掏出来。
 
-**Grill the send, not the subject.** Interview the user only about the _send_, which they can always answer: who it goes to, and what they need back. The questions in the document then target the **gap** between what the recipient knows and what the user needs.
+**只访谈发送内容，不访谈主题。**只问用户_发送内容（send）_，这个他永远答得上：发给谁，要带回什么。文档里的问题瞄准**缺口**：对方知道的与用户要的之间差的那块。
 
 
-1. **Who is it going to?** Ask, in one exchange, the recipient's role, expertise, and relationship to the user. This fixes the questionnaire's tone and how much context it must carry. Done when you know who the recipient is and what they know that the user doesn't.
+1. **发给谁？**一次问清对方的角色、专长和跟用户的关系。定下问卷的语气和要带多少语境。知道对方是谁、他会什么用户不会，算完。
 
-2. **What do you need back?** Ask, in one exchange, the specific decisions or facts the user can't resolve alone and needs from this person. Done when you have a concrete list of what the user must walk away able to do or decide.
+2. **要带回什么？**一次问清用户独自定不了、要这个人给的具体决策或事实。拿到用户走开时能干能定的具体清单，算完。
 
-3. **Write the questionnaire.** Draft questions aimed at the gap from steps 1–2, following the Document structure below. Write it to `to-questionnaire-<slug>.md` in the current directory (slug from the topic) and report the path. Done when the file exists and every item the user named in step 2 is covered by a question.
+3. **写问卷。**按下面文档结构，起草瞄准第 1 到 2 步那个缺口的问题。写到当前目录的 `to-questionnaire-<slug>.md`（slug 取自主题），汇报路径。文件存在、第 2 步点名的每项都有题覆盖，算完。
 
-## Document structure
+## 文档结构
 
-Frame the document as a **discovery questionnaire**: the user lacks context, the recipient holds it. Order questions most-important-first, since async means you may only get one pass, and group them under `##` headings by theme once there are more than a handful. Write it using the template below.
+把文档定成**发现型问卷（discovery questionnaire）**：用户缺语境，对方有语境。问题按重要性排序，异步可能只有一轮，题目一多就按主题挂 `##` 标题下分组。按下面模板写。
 
 <questionnaire-template>
 
