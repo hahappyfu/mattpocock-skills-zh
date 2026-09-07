@@ -32,7 +32,7 @@ Wizard 默认是临时的：为一次运行而构建，保存到临时或 `scrip
 
 ### 3. 编写 wizard
 
-将 `template.sh` 复制到目标路径。按依赖顺序用一个 `stage` 替换示例阶段。使用库辅助函数：`stage`、`say`/`step`、`open_url`、`ask`/`ask_secret`、`write_env`、`set_secret`/`set_var`、`pause`/`confirm`。将 `TOTAL_STAGES` 设置为你编写的阶段数。
+将 `template.sh` 复制到目标路径。按依赖顺序，每个步骤编写一个 `stage` 来替换示例阶段。使用库辅助函数：`stage`、`say`/`step`、`open_url`、`ask`/`ask_secret`、`write_env`、`set_secret`/`set_var`、`pause`/`confirm`。将 `TOTAL_STAGES` 设置为你编写的阶段数。
 
 保持模板设定的标准：在询问值之前打开 URL，对任何 secret 使用 `ask_secret`，对每个持久化值使用 `write_env`，仅对 CI 实际需要的值使用 `set_secret`，在任何不可逆操作之前使用 `confirm`。每个 `stage` 清除屏幕，只显示当前步骤：保持阶段聚焦于一项任务，这样人类需要的内容不会滚动出去。不要触及标记上方的库。
 
