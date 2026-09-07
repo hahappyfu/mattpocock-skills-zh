@@ -13,7 +13,7 @@ description: 把测试文件中的 `as` 类型断言换成 @total-typescript/sho
 
 测试中 `as` 的问题：
 
-- 按训练不应使用它
+- 按训练要求，不应使用它
 - 必须手动指定目标类型
 - 故意传入错误数据时要用双重 `as` (`as unknown as Type`)
 

@@ -3,7 +3,7 @@ name: scaffold-exercises
 description: 创建带章节、题目、参考实现和讲解材料的练习目录结构，且能通过 lint。当用户想要 scaffold 练习、创建练习存根或搭建新课程章节时使用。
 ---
 
-# scaffold 练习
+# Scaffold 练习
 
 创建能通过 `pnpm ai-hero-cli internal lint` 的练习目录结构，然后用 `git commit` 提交。
 
