@@ -28,81 +28,81 @@ blocking link、critical path、judgement call
 | Standards axis | Standards 轴 | code-review 双轴名保留英文 |
 | Spec axis | Spec 轴 | code-review 双轴名保留英文 |
 | fixed point | 固定点 | code-review 语境 |
-| smell baseline | smell 基线 | — |
+| smell baseline | smell 基线 |  |
 | findings | 发现 | review 语境 |
 | aggregate | 汇总 | review 语境 |
 | rerank | rerank | 保留英文 |
-| requirement | 需求 | — |
-| behavior | 行为 | — |
-| feature | 功能 | — |
+| requirement | 需求 |  |
+| behavior | 行为 |  |
+| feature | 功能 |  |
 | hypothesis | 假设 | 诊断语境 |
-| minimise | 最小化 | — |
-| reproduce | 复现 | — |
-| reproducer | 复现用例 | — |
-| throwaway | 一次性 | — |
-| one-off | 一次性的 | — |
-| third-party | 第三方 | — |
+| minimise | 最小化 |  |
+| reproduce | 复现 |  |
+| reproducer | 复现用例 |  |
+| throwaway | 一次性 |  |
+| one-off | 一次性的 |  |
+| third-party | 第三方 |  |
 | walk through | 走完 | 向导语境 |
-| interactive | 交互式 | — |
-| visual report | 可视化 report | — |
-| vocabulary | 词汇表 | — |
-| gain | 收益 | — |
-| cost | 成本 | — |
-| coupling | 耦合 | — |
-| cohesion | 内聚 | — |
-| encapsulation | 封装 | — |
-| dependency | 依赖 | — |
-| dependency injection | 依赖注入 | — |
+| interactive | 交互式 |  |
+| visual report | 可视化 report |  |
+| vocabulary | 词汇表 |  |
+| gain | 收益 |  |
+| cost | 成本 |  |
+| coupling | 耦合 |  |
+| cohesion | 内聚 |  |
+| encapsulation | 封装 |  |
+| dependency | 依赖 |  |
+| dependency injection | 依赖注入 |  |
 | endpoint | endpoint | 保留英文 |
-| conditional logic | 条件逻辑 | — |
-| system boundary | 系统边界 | — |
-| boundary | 边界 | — |
-| external API | 外部 API | — |
-| database | 数据库 | — |
-| file system | 文件系统 | — |
-| call count | 调用次数 | — |
-| call order | 调用顺序 | — |
-| assertion | 断言 | — |
-| expected value | 期望值 | — |
-| independent source of truth | 独立事实来源 | — |
-| pass by construction | 构造上必然通过 | — |
+| conditional logic | 条件逻辑 |  |
+| system boundary | 系统边界 |  |
+| boundary | 边界 |  |
+| external API | 外部 API |  |
+| database | 数据库 |  |
+| file system | 文件系统 |  |
+| call count | 调用次数 |  |
+| call order | 调用顺序 |  |
+| assertion | 断言 |  |
+| expected value | 期望值 |  |
+| independent source of truth | 独立事实来源 |  |
+| pass by construction | 构造上必然通过 |  |
 | implementation-coupled | 实现耦合 | anti-pattern 名 |
 | horizontal slicing | 横向切分 | anti-pattern 名 |
 | vertical slicing | 纵向切分 | 与 horizontal 相对 |
-| bulk test | 批量测试 | — |
-| imagined behavior | 想象中的行为 | — |
-| minimal implementation | 最小实现 | — |
-| speculative feature | 投机性功能 | — |
-| anticipate future tests | 预写未来的测试 | — |
-| red before green | red 先于 green | — |
-| one slice at a time | 一次一个 slice | — |
-| rules of the loop | 循环规则 | — |
-| anti-pattern | 反模式 | — |
-| where tests go | 测试放哪 | — |
-| pre-agreed | 预先商定的 | — |
-| edge case | 边界情况 | — |
-| side channel | 侧信道 | — |
-| public interface | 公开接口 | — |
-| public API | 公开 API | — |
-| implementation detail | 实现细节 | — |
-| specification | 规格说明 | — |
-| reads like a specification | 读起来像规格说明 | — |
-| survives refactors | 在重构后依然成立 | — |
+| bulk test | 批量测试 |  |
+| imagined behavior | 想象中的行为 |  |
+| minimal implementation | 最小实现 |  |
+| speculative feature | 投机性功能 |  |
+| anticipate future tests | 预写未来的测试 |  |
+| red before green | red 先于 green |  |
+| one slice at a time | 一次一个 slice |  |
+| rules of the loop | 循环规则 |  |
+| anti-pattern | 反模式 |  |
+| where tests go | 测试放哪 |  |
+| pre-agreed | 预先商定的 |  |
+| edge case | 边界情况 |  |
+| side channel | 侧信道 |  |
+| public interface | 公开接口 |  |
+| public API | 公开 API |  |
+| implementation detail | 实现细节 |  |
+| specification | 规格说明 |  |
+| reads like a specification | 读起来像规格说明 |  |
+| survives refactors | 在重构后依然成立 |  |
 | refactoring | 重构 | 泛指行为时用中文 |
 | fetcher | fetcher | 保留英文 |
-| mockable | 可 mock 的 | — |
-| shape | 形状 | — |
-| hard violation | 硬性违规 | — |
-| documented standard | 成文规范 | — |
-| coding standard | 编码规范 | — |
-| baseline | 基线 | — |
-| state machine | 状态机 | — |
+| mockable | 可 mock 的 |  |
+| shape | 形状 |  |
+| hard violation | 硬性违规 |  |
+| documented standard | 成文规范 |  |
+| coding standard | 编码规范 |  |
+| baseline | 基线 |  |
+| state machine | 状态机 |  |
 | label state | label 状态 | triage 状态机 |
-| issue number | issue 编号 | — |
-| range | 范围 | — |
-| declaring edges | 声明的 blocking edges | — |
-| native blocking link | 原生 blocking link | — |
-| declare | 声明 | — |
+| issue number | issue 编号 |  |
+| range | 范围 |  |
+| declaring edges | 声明的 blocking edges |  |
+| native blocking link | 原生 blocking link |  |
+| declare | 声明 |  |
 | scope | scope | 保留英文 |
 | flow | 流程 | 路由语境 |
 | main flow | 主流程 | 路由语境 |
@@ -133,23 +133,23 @@ blocking link、critical path、judgement call
 | writing-for-agents | 为智能体写作 | 路由语境 |
 | setup-matt-pocock-skills | 安装 matt-pocock-skills | 路由语境 |
 | ubiquitous language | 通用语言 | DDD 语境 |
-| merge conflict | 合并冲突 | — |
-| rebase conflict | 变基冲突 | — |
-| automated check | 自动化检查 | — |
+| merge conflict | 合并冲突 |  |
+| rebase conflict | 变基冲突 |  |
+| automated check | 自动化检查 |  |
 | blast radius | 爆炸半径 | 代码变更影响范围 |
 | wide refactor | 宽重构 | 单个变更横跨整个代码库 |
 | expand–contract | 扩展收缩模式 | 宽重构的序列化策略 |
 | prefactoring | 预重构 | 实现前使变更更容易的重构 |
 | frontier | 前线 | 所有阻塞项已完成、可立即开始的工单集合 |
-| demo | 演示 | — |
-| acceptance criteria | 验收标准 | — |
+| demo | 演示 |  |
+| acceptance criteria | 验收标准 |  |
 | integration branch | 集成分支 | 多批次共享的验证分支 |
-| rework | 返工 | — |
-| floor | 下限 | — |
+| rework | 返工 |  |
+| floor | 下限 |  |
 | brief | 简报 | agent brief 语境 |
-| procedural | 流程化的 | — |
-| durability | 持久性 | — |
-| gold-plating | 过度装饰 | — |
+| procedural | 流程化的 |  |
+| durability | 持久性 |  |
+| gold-plating | 过度装饰 |  |
 | institutional memory | 机构记忆 | 知识库语境 |
 | deduplication | 去重 | 知识库语境 |
 | kebab-case | kebab-case | 保留英文 |

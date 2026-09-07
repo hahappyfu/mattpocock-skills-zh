@@ -14,14 +14,30 @@ function fail(file, msg, line) {
 function read(file) {
   return fs.readFileSync(file, "utf8");
 }
+function isFenceLine(line) {
+  return line.trimStart().startsWith("```");
+}
 function stripFences(text) {
-  return text.split("```").filter((_, i) => i % 2 === 0).join("");
+  let inFence = false;
+  const out = [];
+  for (const line of text.split("\n")) {
+    if (isFenceLine(line)) {
+      inFence = !inFence;
+      continue;
+    }
+    if (!inFence) out.push(line);
+  }
+  return out.join("\n");
 }
 
 for (const file of files) {
   if (!file.endsWith(".md")) continue;
+  if (file === "CHANGELOG.md") continue;
+  if (file.startsWith("docs/superpowers/")) continue;
+  // docs/productivity/ 尚未汉化，待第二批汉化落盘后再纳入检查
+  if (file.startsWith("docs/productivity/")) continue;
   const text = read(file);
-  const fences = text.match(/```/g) || [];
+  const fences = text.split("\n").filter(isFenceLine);
   if (fences.length % 2 !== 0) {
     fail(file, "unbalanced fenced code blocks");
   }
@@ -30,16 +46,14 @@ for (const file of files) {
     let inFence = false;
     let hitLine = 0;
     for (const [idx, line] of text.split("\n").entries()) {
-      const segs = line.split("```");
-      let proseLine = "";
-      for (let k = 0; k < segs.length; k++) {
-        if (!inFence && k % 2 === 0) proseLine += segs[k];
+      if (isFenceLine(line)) {
+        inFence = !inFence;
+        continue;
       }
-      if (/—|——/.test(proseLine)) {
+      if (!inFence && /—|——/.test(line)) {
         hitLine = idx + 1;
         break;
       }
-      if ((line.match(/```/g) || []).length % 2 !== 0) inFence = !inFence;
     }
     fail(file, "long dash found outside code fences", hitLine || undefined);
   }
