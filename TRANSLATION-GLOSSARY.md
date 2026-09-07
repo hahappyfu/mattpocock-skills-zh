@@ -18,7 +18,7 @@ label、milestone、bug、regression、regression test、feedback loop、
 instrument、endpoint、SDK-style、type safety、test setup、collaborator、
 private method、assert、snapshot、tautological、known-good literal、
 worked example、scaffolding、sketch、user story、blocking edge、
-blocking link、critical path、judgement call
+blocking link、critical path、judgement call、scaffold、dash-case、linter、shebang、smoke
 
 ## 中文译法
 
@@ -140,7 +140,7 @@ blocking link、critical path、judgement call
 | wide refactor | 宽重构 | 单个变更横跨整个代码库 |
 | expand–contract | 扩展收缩模式 | 宽重构的序列化策略 |
 | prefactoring | 预重构 | 实现前使变更更容易的重构 |
-| frontier | 前线 | 所有阻塞项已完成、可立即开始的工单集合 |
+| frontier | 前线 | 所有阻塞项已完成、可立即开始的工单集合；grill 语境指设计分支集合 |
 | demo | 演示 |  |
 | acceptance criteria | 验收标准 |  |
 | integration branch | 集成分支 | 多批次共享的验证分支 |
@@ -197,6 +197,102 @@ blocking link、critical path、judgement call
 | delegating | 委派 | loop-me 语境 |
 | steering | 转向 | retro 语境 |
 | checklist | 检查清单 | loop-me 语境 |
+| context load | 上下文负荷 | writing-for-agents 语境 |
+| cognitive load | 认知负荷 | writing-for-agents 语境 |
+| information hierarchy | 信息层级 | writing-for-agents 语境 |
+| In-file step | 文件内步骤 | writing-for-agents 语境 |
+| In-file reference | 文件内参考 | writing-for-agents 语境 |
+| Disclosed reference | 披露式参考 | writing-for-agents 语境 |
+| progressive disclosure | 渐进披露 | writing-for-agents 语境 |
+| co-location | 并置 | writing-for-agents 语境 |
+| sprawl | 膨胀 | writing-for-agents 语境 |
+| completion criterion | 完成标准 | writing-for-agents 语境 |
+| premature completion | 过早收尾 | writing-for-agents 语境 |
+| post-completion steps | 后续步骤 | writing-for-agents 语境 |
+| legwork | 深挖工作 | writing-for-agents 语境 |
+| exhaustiveness bar | 穷尽线 | writing-for-agents 语境 |
+| negation | 否定表达 | writing-for-agents 语境 |
+| guardrail | 护栏 | 跨组统一用护栏 |
+| single source of truth | 单一事实来源 | writing-for-agents 语境 |
+| duplication | 重复 | writing-for-agents 语境 |
+| rank | 排位 | writing-for-agents 语境 |
+| cache | 缓存 | writing-for-agents 语境 |
+| relevance | 相关性 | writing-for-agents 语境 |
+| sediment | 沉积 | writing-for-agents 语境 |
+| variance bug | 不一致 bug | writing-for-agents 语境 |
+| invocation | 调用 | writing-for-agents 语境 |
+| router skill | 路由 skill | writing-for-agents 语境 |
+| trade | 权衡 | writing-for-agents 语境 |
+| lens | 镜片 | writing-for-agents 语境 |
+| exemplar | 范例 | writing-for-agents 语境 |
+| agency | 能动性 | writing-for-agents 语境 |
+| round | 轮次 | grill 语境 |
+| design tree | 设计树 | grill 语境 |
+| questionnaire | 问卷 | to-questionnaire 语境 |
+| send | 发送内容 | to-questionnaire 语境，作名词 |
+| gap | 缺口 | to-questionnaire 语境 |
+| discovery questionnaire | 发现型问卷 | to-questionnaire 语境 |
+| dangerous | 危险的 | guardrails 语境 |
+| destructive | 破坏性 | guardrails 语境 |
+| intercept | 拦截 | guardrails 语境 |
+| block | 拦截 | guardrails 语境，与 intercept 同译法 |
+| authority | 权限 | guardrails 语境 |
+| customization | 自定义 | guardrails 语境 |
+| pattern | 模式 | guardrails 语境 |
+| overwrite | 覆盖 | guardrails 语境 |
+| verify | 验证 | guardrails、setup 语境 |
+| exit code | 退出码 | guardrails 语境 |
+| settings | 设置 | guardrails、setup 语境 |
+| partial data | 部分数据 | shoehorn 语境 |
+| target type | 目标类型 | shoehorn 语境 |
+| large object | 大对象 | shoehorn 语境 |
+| autocomplete | 自动补全 | shoehorn 语境 |
+| error testing | 错误测试 | shoehorn 语境 |
+| test file | 测试文件 | shoehorn 语境 |
+| type check | 类型检查 | shoehorn、setup 语境 |
+| function | 函数 | shoehorn 语境 |
+| use case | 使用场景 | shoehorn 语境 |
+| install | 安装 | shoehorn、setup 语境 |
+| Before | 修改前 | shoehorn 语境，示例引导词 |
+| After | 修改后 | shoehorn 语境，示例引导词 |
+| stub | 存根 | scaffold 语境 |
+| problem | 题目 | scaffold 语境，练习文件夹概念 |
+| variant | 变体 | scaffold 语境 |
+| subfolder | 子文件夹 | scaffold 语境 |
+| student workspace | 学生工作区 | scaffold 语境 |
+| plan | 计划 | scaffold 语境 |
+| minimal | 最小 | scaffold 语境 |
+| broken link | 损坏的链接 | scaffold 语境 |
+| required | 必需 | scaffold 语境 |
+| summary | 小结 | scaffold 语境 |
+| rule | 规则 | scaffold 语境 |
+| primary | 主要 | scaffold 语境 |
+| move | 移动 | scaffold 语境 |
+| rename | 重命名 | scaffold 语境 |
+| renumber | 重新编号 | scaffold 语境 |
+| history | 历史 | scaffold 语境 |
+| prefix | 前缀 | scaffold 语境 |
+| naming | 命名 | scaffold 语境 |
+| config | 配置 | setup 语境 |
+| missing | 缺失 | setup 语境 |
+| script | 脚本 | setup 语境 |
+| package manager | 包管理器 | setup 语境 |
+| detect | 检测 | setup 语境 |
+| initialize | 初始化 | setup 语境 |
+| create | 创建 | setup 语境 |
+| write | 写入 | setup 语境 |
+| adapt | 调整 | setup 语境 |
+| omit | 去掉 | setup 语境 |
+| default | 默认值 | setup 语境 |
+| stage | 暂存 | setup 语境，动词 |
+| message | 消息 | setup 语境 |
+| note | 说明 | setup 语境 |
+| quality | 质量 | setup 语境 |
+| check | 检查 | setup 语境 |
+| tell | 告知 | setup 语境 |
+| Ball Of Mud | 泥球系统 | 顶层说明语境 |
+| materialization cascade | 物化级联 | 顶层说明语境 |
+| session | 会话 | 全仓统一 |
 
 ## 使用规则
 
