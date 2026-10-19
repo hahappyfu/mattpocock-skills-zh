@@ -1,7 +1,6 @@
 ---
 name: implement
 description: "根据规格说明或工单，实现功能。"
-disable-model-invocation: true
 ---
 
 根据用户在规格说明或工单中描述的工作进行实现。

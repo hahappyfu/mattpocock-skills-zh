@@ -2,7 +2,6 @@
 name: handoff
 description: 把当前对话压成一份 handoff 文档，交给另一个智能体接手。
 argument-hint: "下一次会话用来做什么？"
-disable-model-invocation: true
 ---
 
 写一份 handoff 文档总结当前对话，让新的智能体能接手。存到用户操作系统的临时目录，不要存进当前工作区。

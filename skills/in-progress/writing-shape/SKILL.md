@@ -1,7 +1,6 @@
 ---
 name: writing-shape
 description: "写作深耕：把素材堆一段一段塑造成文章。"
-disable-model-invocation: true
 ---
 
 <what-to-do>

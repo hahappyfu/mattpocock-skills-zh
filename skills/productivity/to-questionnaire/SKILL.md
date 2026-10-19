@@ -1,7 +1,6 @@
 ---
 name: to-questionnaire
 description: 把你独自答不全的决策变成问卷，交给别人填。
-disable-model-invocation: true
 ---
 
 把用户独自搞不定的事变成一份**问卷（questionnaire）**：markdown 文档，交到一个人手里异步填，或开会一起填。对方手里有用户缺的知识，问卷负责掏出来。

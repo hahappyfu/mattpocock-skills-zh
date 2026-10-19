@@ -1,7 +1,6 @@
 ---
 name: writing-fragments
 description: "写作探索：挖原始片段，暂不定结构。"
-disable-model-invocation: true
 ---
 
 <what-to-do>

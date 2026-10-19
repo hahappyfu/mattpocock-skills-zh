@@ -1,7 +1,6 @@
 ---
 name: retro
 description: "对一次编程会话做复盘。"
-disable-model-invocation: true
 ---
 
 用户要求做一次**复盘（retrospective）**，你要针对编码 agent 的**环境（environment）**提出改进建议，让以后的运行更好。

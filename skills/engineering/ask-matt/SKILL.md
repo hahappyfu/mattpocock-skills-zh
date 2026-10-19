@@ -1,7 +1,6 @@
 ---
 name: ask-matt
 description: 询问哪个 skill 或流程适合你的场景。这是本仓库 skill 的路由。
-disable-model-invocation: true
 ---
 
 # 问 Matt

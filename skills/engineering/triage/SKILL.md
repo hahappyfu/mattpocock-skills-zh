@@ -1,7 +1,6 @@
 ---
 name: triage
 description: 将 issue 和外部 PR 通过 triage 角色的状态机流转，分类、验证、必要时访谈，并撰写 agent-ready brief。
-disable-model-invocation: true
 ---
 
 # Triage

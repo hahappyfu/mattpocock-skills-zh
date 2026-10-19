@@ -1,7 +1,6 @@
 ---
 name: to-tickets
 description: "将计划、spec 或当前对话分解为一组 tracer-bullet ticket，每个声明其 blocking edges，发布到配置的 tracker（edges 作为文本每个 ticket 一个文件在本地，或真实 tracker 上的原生 blocking link）。"
-disable-model-invocation: true
 ---
 
 # To Tickets

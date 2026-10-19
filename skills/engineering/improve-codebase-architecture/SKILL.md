@@ -1,7 +1,6 @@
 ---
 name: improve-codebase-architecture
 description: 扫描代码库寻找深化机会，生成可视化 HTML 报告，然后访谈你选择的方案。
-disable-model-invocation: true
 ---
 
 # 改进代码库架构

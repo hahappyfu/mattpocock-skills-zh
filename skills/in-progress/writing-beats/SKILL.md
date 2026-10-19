@@ -1,7 +1,6 @@
 ---
 name: writing-beats
 description: 写作深耕：把素材堆编成一段节拍之旅，每用一个概念前先把它落定。
-disable-model-invocation: true
 ---
 
 <what-to-do>

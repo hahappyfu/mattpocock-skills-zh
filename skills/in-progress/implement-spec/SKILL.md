@@ -1,7 +1,6 @@
 ---
 name: implement-spec
 description: "在代码中实现一份 spec。"
-disable-model-invocation: true
 ---
 
 你拿到了一份 spec，这份 spec 附带了描述如何实现它的 ticket。
